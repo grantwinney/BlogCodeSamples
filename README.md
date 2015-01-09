@@ -1,2 +1,2 @@
-# BlogSamplesCSharp
-C# samples from my blog
+# BlogCodeSamples
+Code samples from my blog
