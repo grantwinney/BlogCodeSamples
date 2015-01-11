@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace PushingDataBackToParentForm
+namespace MockClassroomProject
 {
     static class Program
     {

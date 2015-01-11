@@ -1,6 +1,6 @@
-﻿namespace PushingDataBackToParentForm
+﻿namespace PullingDataFromChildForm
 {
-    partial class Form1
+    partial class StudentForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnGetUserInput = new System.Windows.Forms.Button();
-            this.lblName = new System.Windows.Forms.Label();
+            this.lblStudentName = new System.Windows.Forms.Label();
             this.lblAge = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -43,14 +43,14 @@
             this.btnGetUserInput.UseVisualStyleBackColor = true;
             this.btnGetUserInput.Click += new System.EventHandler(this.btnGetUserInput_Click);
             // 
-            // lblName
+            // lblStudentName
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(12, 9);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(45, 13);
-            this.lblName.TabIndex = 1;
-            this.lblName.Text = "lblName";
+            this.lblStudentName.AutoSize = true;
+            this.lblStudentName.Location = new System.Drawing.Point(12, 9);
+            this.lblStudentName.Name = "lblStudentName";
+            this.lblStudentName.Size = new System.Drawing.Size(45, 13);
+            this.lblStudentName.TabIndex = 1;
+            this.lblStudentName.Text = "lblStudentName";
             // 
             // lblAge
             // 
@@ -67,9 +67,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.lblAge);
-            this.Controls.Add(this.lblName);
+            this.Controls.Add(this.lblStudentName);
             this.Controls.Add(this.btnGetUserInput);
-            this.Name = "Form1";
+            this.Name = "EmployeeForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -79,7 +79,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnGetUserInput;
-        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblStudentName;
         private System.Windows.Forms.Label lblAge;
     }
 }

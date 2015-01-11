@@ -1,6 +1,6 @@
-﻿namespace PushingDataBackToParentForm
+﻿namespace PullingDataFromChildForm
 {
-    partial class Form1
+    partial class EmployeeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -61,7 +61,7 @@
             this.lblAge.TabIndex = 2;
             this.lblAge.Text = "lblAge";
             // 
-            // Form1
+            // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -69,8 +69,8 @@
             this.Controls.Add(this.lblAge);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.btnGetUserInput);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "StudentForm";
+            this.Text = "EmployeeForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 
