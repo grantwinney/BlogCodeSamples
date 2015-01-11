@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1_PushingDataBackToParentForm", "PassingDataBetweenForms\1_PushingDataBackToParentForm.csproj", "{2A58290B-87C9-4DBB-8F10-877CFD8544B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1_PushingDataBackToParentForm", "1_PushingDataBackToParentForm\1_PushingDataBackToParentForm.csproj", "{2A58290B-87C9-4DBB-8F10-877CFD8544B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "0_MockClassroomProject", "PretendClassroomProject\0_MockClassroomProject.csproj", "{CB0481EF-E584-4997-90E6-5B418CD671D2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "0_MockClassroomProject", "0_MockClassroomProject\0_MockClassroomProject.csproj", "{CB0481EF-E584-4997-90E6-5B418CD671D2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2_PushingDataBackToOneOfMultipleParentForms", "2_PushingDataBackToOneOfMultipleForms\2_PushingDataBackToOneOfMultipleParentForms.csproj", "{051D7E5D-8053-4EEC-B5BE-037487707CCA}"
 EndProject
