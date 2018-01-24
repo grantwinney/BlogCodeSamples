@@ -1,3 +1,5 @@
 *.suo
 bin
 obj
+*.pyc
+.DS_Store
