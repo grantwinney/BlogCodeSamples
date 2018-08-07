@@ -7,4 +7,6 @@ http://www.grantwinney.com
 
 ---
 
-Now I tend to use tools like [Gist](https://gist.github.com/grantwinney) and [JsFiddle](https://jsfiddle.net/user/grantwinney/fiddles/), and then just embed the snippets in my blog posts.
+Aug 2018:
+
+Nowadays, I tend to use tools like [Gist](https://gist.github.com/grantwinney) and [JsFiddle](https://jsfiddle.net/user/grantwinney/fiddles/), and then just embed the snippets in my blog posts.
