@@ -18,6 +18,8 @@ The following list of blog posts includes a link to the part of the repo with th
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/MockingDependencies052014)
 * [Passing data between two Forms in WinForms](https://grantwinney.com/passing-data-between-two-forms-in-winforms/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/PassingDataBetweenForms)
+* [Querying Amazon's product details with the Amazon Product Advertising API](https://grantwinney.com/querying-amazon-product-details-with-the-amazon-product-advertising-api/)
+[💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/AmazonProductAdvertisingApiBlogPost)
 * [The effect of the Obsolete attribute on a class is ignored when there's an interface involved](https://grantwinney.com/the-effect-of-the-obsolete-attribute-on-a-class-is-ignored-when-theres-an-interface-involved/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/ObsoleteAttributeOnInterfaces022015)
 * [Using a TextBox and CollectionViewSource to Filter a ListView in WPF](https://grantwinney.com/using-a-textbox-and-collectionviewsource-to-filter-a-listview-in-wpf/)
