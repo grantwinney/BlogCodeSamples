@@ -1,12 +1,8 @@
-# BlogCodeSamples
-This repository contains most code samples from my blog posts.
+# My Blog Code Samples
 
-Project names should match post titles fairly closely; where there might be ambiguity, I appended the month and year of the post to the end of the project name.
+This repository contains some of the (usually lengthier) code samples from my blog posts. I also tend to host shorter snippets on [Gist](https://gist.github.com/grantwinney) and [JsFiddle](https://jsfiddle.net/user/grantwinney/fiddles/), and embed them into posts.
 
-http://www.grantwinney.com
+The following list should match the blog post title, followed by two links - one to the post and another to the part of the repo with the relevant code for that post.
 
----
-
-Aug 2018:
-
-Nowadays, I tend to use tools like [Gist](https://gist.github.com/grantwinney) and [JsFiddle](https://jsfiddle.net/user/grantwinney/fiddles/), and then just embed the snippets in my blog posts.
+* Async and PLINQ [🗒](https://grantwinney.com/async-and-plinq/) [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/AsyncAndPlinq112013)
+* How do I convert my code from C# to VB.NET (or from VB.NET to C#)? [🗒](https://grantwinney.com/how-do-i-convert-my-code-from-c-to-vb-net-or-vice-versa/) [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/CSharpAndVbNetTogether)
