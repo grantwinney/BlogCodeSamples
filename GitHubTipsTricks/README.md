@@ -29,7 +29,7 @@ Oh, and [would you like to  <span style="color:red">play</span> a game][♔♕�
 [beauty]:      https://www.familyfriendpoems.com/poem/a-still-moment
 [issues]:      https://github.com/grantwinney/BlogCodeSamples/issues
 [pr]:          https://github.com/grantwinney/BlogCodeSamples/pulls
-[nada]:        nothing
+[nada]:        nothing.md
 [up and over]: ../CollectionViewSourceSample/README.md
 [♔♕♖♗♘♙]: https://www.youtube.com/watch?v=KXzNo0vR_dU
 
