@@ -34,3 +34,17 @@ Oh, and [would you like to  <span style="color:red">play</span> a game][♔♕�
 [♔♕♖♗♘♙]: https://www.youtube.com/watch?v=KXzNo0vR_dU
 
 [//]: # (TODO: Add more tips)
+
+---
+
+## IMAGES
+
+**FULL SIZE**
+
+![issue-example](https://user-images.githubusercontent.com/1354059/52104641-83af6c00-25b9-11e9-81da-0780b2a7b004.png)
+
+**REDUCED**
+
+<img src="https://user-images.githubusercontent.com/1354059/52104641-83af6c00-25b9-11e9-81da-0780b2a7b004.png" width=300>
+
+Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. <img src="https://user-images.githubusercontent.com/1354059/52104641-83af6c00-25b9-11e9-81da-0780b2a7b004.png" width=300 align=right> Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. 
