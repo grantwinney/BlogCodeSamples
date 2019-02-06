@@ -61,6 +61,6 @@ Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can ev
 
 ![](https://placehold.it/400x90/ff0000/000000?text=IMPORTANT!)
 
-https://placehold.it/400x90/ff6600/000?text=WARNING!
+![](https://placehold.it/400x90/ff6600/000?text=WARNING!)
 
-https://placehold.it/350x90/009955/fff?text=SUCCESS!
+![](https://placehold.it/350x90/009955/fff?text=SUCCESS!)
