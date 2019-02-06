@@ -35,16 +35,32 @@ Oh, and [would you like to  <span style="color:red">play</span> a game][♔♕�
 
 [//]: # (TODO: Add more tips)
 
+[example]: https://user-images.githubusercontent.com/1354059/52104641-83af6c00-25b9-11e9-81da-0780b2a7b004.png "example image"
+
 ---
 
 ## IMAGES
 
 **FULL SIZE**
 
-![issue-example](https://user-images.githubusercontent.com/1354059/52104641-83af6c00-25b9-11e9-81da-0780b2a7b004.png)
+![example]
 
 **REDUCED**
 
 <img src="https://user-images.githubusercontent.com/1354059/52104641-83af6c00-25b9-11e9-81da-0780b2a7b004.png" width=300>
 
 Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. <img src="https://user-images.githubusercontent.com/1354059/52104641-83af6c00-25b9-11e9-81da-0780b2a7b004.png" width=300 align=right> Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. Hey look I'll bet we can even wrap text around this. 
+
+---
+
+## COLOR!
+
+- ![#ff0000](https://placehold.it/12/ff0000?text=+) red!
+- ![#9900c5](https://placehold.it/15/9900c5?text=+) purple!
+- ![#157500](https://placehold.it/20/157500?text=+) green!
+
+![](https://placehold.it/400x90/ff0000/000000?text=IMPORTANT!)
+
+https://placehold.it/400x90/ff6600/000?text=WARNING!
+
+https://placehold.it/350x90/009955/fff?text=SUCCESS!
