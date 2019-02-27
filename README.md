@@ -14,6 +14,8 @@ The following list of blog posts includes a link to the part of the repo with th
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/AsyncAndPlinq112013)
 * [Discover where the ISS is, where it will be, and who's on it with the ISS Notify API](https://grantwinney.com/day-11-iss-notify-api/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/IssNotifyApiWrapper)
+* [When an assert isn't assertive enough (or using the wrong macro in an EUnit test)](https://grantwinney.com/when-an-assert-isnt-assertive-enough/
+[💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/EUnitAssertMacro)
 * [How do I convert my code from C# to VB.NET (or from VB.NET to C#)?](https://grantwinney.com/how-do-i-convert-my-code-from-c-to-vb-net-or-vice-versa/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/CSharpAndVbNetTogether)
 * [Mocking Dependencies (silly dependency! um... not that kind of mocking)](https://grantwinney.com/mocking-dependencies-buahaha-silly-dependency-um-not-that-kind-of-mocking/)
