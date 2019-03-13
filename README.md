@@ -28,3 +28,5 @@ The following list of blog posts includes a link to the part of the repo with th
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/CollectionViewSourceSample)
 * [Using Annotations to Assist ReSharper in Analyzing Your Code](https://grantwinney.com/using-annotations-to-help-resharper-analyze-your-code/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/UsingAnnotationsToAssistReSharper)
+* [When an assert isn't assertive enough (or using the wrong macro in an EUnit test)](https://grantwinney.com/when-an-assert-isnt-assertive-enough/)
+[💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/EUnitAssertProblem)
