@@ -1,21 +1,21 @@
 %%%-------------------------------------------------------------------
-%% @doc meck_test public API
+%% @doc salutations public API
 %% @end
 %%%-------------------------------------------------------------------
 
--module(meck_test_app).
+-module(salutations_app).
 
 -behaviour(application).
 
 %% Application callbacks
--export([start/2, stop/1, get_full_name/2]).
+-export([start/2, stop/1, greeting_time/1]).
 
 %%====================================================================
 %% API
 %%====================================================================
 
 start(_StartType, _StartArgs) ->
-    meck_test_sup:start_link().
+    salutations_sup:start_link().
 
 %%--------------------------------------------------------------------
 stop(_State) ->
@@ -23,16 +23,13 @@ stop(_State) ->
 
 %% EXTERNAL
 
-get_full_name(unknown, unknown) ->
-    "Hey there, it's " ++ current_time() ++ "!";
-get_full_name(FirstName, unknown) ->
-    "Hi " ++ FirstName ++ ", it's " ++ current_time() ++ "!";
-get_full_name(unknown, LastName) ->
-    "Hi Mr(s) " ++ LastName ++ ", it's " ++ current_time() ++ "!";
-get_full_name(FirstName, LastName) ->
-    "Hi " ++ FirstName ++ " " ++ LastName ++ ", it's " ++ current_time() ++ "!".
+greeting_time(Name) ->
+    format("Hi ~s, it's ~s!", [Name, current_time()]).
 
 %% INTERNAL
 
 current_time() ->
     binary_to_list(iso8601:format(calendar:universal_time())).
+
+format(Template, Params) ->
+    lists:flatten(io_lib:fwrite(Template, Params)).

@@ -1,8 +1,8 @@
-{application, meck_test,
+{application, salutations,
  [{description, "An OTP application"},
   {vsn, "0.1.0"},
   {registered, []},
-  {mod, {meck_test_app, []}},
+  {mod, {salutations_app, []}},
   {applications,
    [kernel,
     stdlib

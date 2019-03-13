@@ -1,9 +1,9 @@
 %%%-------------------------------------------------------------------
-%% @doc meck_test top level supervisor.
+%% @doc salutations top level supervisor.
 %% @end
 %%%-------------------------------------------------------------------
 
--module(meck_test_sup).
+-module(salutations_sup).
 
 -behaviour(supervisor).
 
