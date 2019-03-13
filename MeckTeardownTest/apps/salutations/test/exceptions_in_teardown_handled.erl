@@ -1,4 +1,4 @@
--module(exceptions_in_teardown).
+-module(exceptions_in_teardown_handled).
 
 -ifdef(EUNIT).
 
@@ -13,9 +13,16 @@ setup() ->
     Modules.
 
 teardown(Modules) ->
-    ?debugFmt("Do we ALWAYS get into teardown? (well, the first time...)", []),
-    _ = 1/0,
-    meck:unload(Modules).
+    try
+        ?debugFmt("Do we ALWAYS get into teardown? (hopefully!)", []),
+        _ = 1/0
+    of _ -> ok
+    catch
+        C:R -> ?debugFmt("Teardown failed!!! ~p : ~p", [C,R])
+    after
+        ?debugFmt("Do we ALWAYS get into after block?", []),
+        meck:unload(Modules)
+    end.
 
 greeting_time_test_() ->
     {foreach, fun setup/0, fun teardown/1,
