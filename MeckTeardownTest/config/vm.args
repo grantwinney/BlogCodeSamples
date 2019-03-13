@@ -1,0 +1,6 @@
+-sname meck_test
+
+-setcookie meck_test_cookie
+
++K true
++A30
