@@ -22,7 +22,7 @@ The following list of blog posts includes a link to the part of the repo with th
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/MockingDependencies052014)
 * [Passing data between two Forms in WinForms](https://grantwinney.com/passing-data-between-two-forms-in-winforms/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/AttributesExamples)
-* [Practical Examples of C# Attributes (and why you'll want to use them)](https://grantwinney.com/5-examples-of-attributes-in-c-and-why-youll-want-to-make-your-own/)
+* [Practical Examples of C# Attributes](https://grantwinney.com/5-examples-of-attributes-in-c-and-why-youll-want-to-make-your-own/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/PassingDataBetweenForms)
 * [Querying Amazon's product details with the Amazon Product Advertising API](https://grantwinney.com/querying-amazon-product-details-with-the-amazon-product-advertising-api/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/AmazonProductAdvertisingApiBlogPost)
