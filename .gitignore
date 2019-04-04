@@ -4,3 +4,4 @@ obj
 *.pyc
 .DS_Store
 *.userprefs
+.vs
