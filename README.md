@@ -4,16 +4,14 @@ This repository contains some of the (usually lengthier) code samples from my bl
 
 The following list of blog posts includes a link to the part of the repo with the relevant code for that post.
 
-* [5 Cool markdown tricks for GitHub](https://grantwinney.com/cool-markdown-tricks-for-github/)
-[💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/GitHubTipsTricks)
 * [An explanation of implicit and explicit conversion in C#](https://grantwinney.com/an-explanation-of-implicit-and-explicit-conversion-in-c/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/ImplicitExplicitOperators022015)
 * [An extension method for passing a column name to SqlDataReader.GetFieldValue in C#](https://grantwinney.com/an-extension-method-for-passing-a-column-name-to-sqldatareader-getfieldvalue-in-c/)
-[💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/AttributesExamples)
-* [Attributes](https://grantwinney.com/5-examples-of-attributes-in-c-and-why-youll-want-to-make-your-own/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/SqlDataReaderGetFieldValueByName)
 * [Async and PLINQ](https://grantwinney.com/async-and-plinq/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/AsyncAndPlinq112013)
+* [Cool markdown tricks for GitHub](https://grantwinney.com/cool-markdown-tricks-for-github/)
+[💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/GitHubTipsTricks)
 * [Discover where the ISS is, where it will be, and who's on it with the ISS Notify API](https://grantwinney.com/day-11-iss-notify-api/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/IssNotifyApiWrapper)
 * [How do I convert my code from C# to VB.NET (or from VB.NET to C#)?](https://grantwinney.com/how-do-i-convert-my-code-from-c-to-vb-net-or-vice-versa/)
@@ -23,6 +21,8 @@ The following list of blog posts includes a link to the part of the repo with th
 * [Mocking Dependencies (silly dependency! um... not that kind of mocking)](https://grantwinney.com/mocking-dependencies-buahaha-silly-dependency-um-not-that-kind-of-mocking/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/MockingDependencies052014)
 * [Passing data between two Forms in WinForms](https://grantwinney.com/passing-data-between-two-forms-in-winforms/)
+[💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/AttributesExamples)
+* [Practical Examples of C# Attributes (and why you'll want to use them)](https://grantwinney.com/5-examples-of-attributes-in-c-and-why-youll-want-to-make-your-own/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/PassingDataBetweenForms)
 * [Querying Amazon's product details with the Amazon Product Advertising API](https://grantwinney.com/querying-amazon-product-details-with-the-amazon-product-advertising-api/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/AmazonProductAdvertisingApiBlogPost)
