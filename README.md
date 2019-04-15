@@ -16,6 +16,8 @@ The following list of blog posts includes a link to the part of the repo with th
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/IssNotifyApiWrapper)
 * [How do I convert my code from C# to VB.NET (or from VB.NET to C#)?](https://grantwinney.com/how-do-i-convert-my-code-from-c-to-vb-net-or-vice-versa/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/CSharpAndVbNetTogether)
+* [How to use an application config file with a .NET Standard app and NUnit 3)](https://grantwinney.com/how-to-use-an-app-config-file-with-a-net-standard-app-and-nunit-3/)
+[💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/ReadingConfigFile)
 * [Keep your EUnit teardown logic as simple as possible!](https://grantwinney.com/keep-your-eunit-teardown-logic-as-simple/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/MeckTeardownTest)
 * [Mocking Dependencies (silly dependency! um... not that kind of mocking)](https://grantwinney.com/mocking-dependencies-buahaha-silly-dependency-um-not-that-kind-of-mocking/)
