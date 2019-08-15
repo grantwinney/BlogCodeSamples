@@ -4,6 +4,8 @@ This repository contains some of the (usually lengthier) code samples from my bl
 
 The following list of blog posts includes a link to the part of the repo with the relevant code for that post.
 
+* A sample C# app for generating and verifying TOTP 2FA codes
+[💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/2FAQrCode)
 * [An explanation of implicit and explicit conversion in C#](https://grantwinney.com/an-explanation-of-implicit-and-explicit-conversion-in-c/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/ImplicitExplicitOperators022015)
 * [An extension method for passing a column name to SqlDataReader.GetFieldValue in C#](https://grantwinney.com/an-extension-method-for-passing-a-column-name-to-sqldatareader-getfieldvalue-in-c/)
