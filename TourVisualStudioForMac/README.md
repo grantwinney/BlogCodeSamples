@@ -1,2 +1,3 @@
-# visual-studio-for-mac-sandbox
-Experimenting with the capabilities of Visual Studio for Mac
+# A Tour of Visual Studio for Mac
+
+[A briefly longish tour of Visual Studio for Mac](https://grantwinney.com/a-brief-tour-of-visual-studio-for-mac/)
