@@ -34,6 +34,8 @@ The following list of blog posts includes a link to the part of the repo with th
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/WindowsXPVisualStudio)
 * [The effect of the Obsolete attribute on a class is ignored when there's an interface involved](https://grantwinney.com/the-effect-of-the-obsolete-attribute-on-a-class-is-ignored-when-theres-an-interface-involved/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/ObsoleteAttributeOnInterfaces022015)
+* [A briefly longish tour of Visual Studio for Mac](https://grantwinney.com/a-brief-tour-of-visual-studio-for-mac/)
+[💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/TourVisualStudioForMac)
 * [Using a TextBox and CollectionViewSource to Filter a ListView in WPF](https://grantwinney.com/using-a-textbox-and-collectionviewsource-to-filter-a-listview-in-wpf/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/CollectionViewSourceSample)
 * [Using Annotations to Assist ReSharper in Analyzing Your Code](https://grantwinney.com/using-annotations-to-help-resharper-analyze-your-code/)
