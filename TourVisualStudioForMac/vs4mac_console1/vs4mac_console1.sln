@@ -1,0 +1,22 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vs4mac_console1", "vs4mac_console1\vs4mac_console1.csproj", "{C165BFE1-47DF-46F6-9B75-704F8421BCEC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4C6A3649-33D6-4099-8274-A22F19647CA6}"
+	ProjectSection(SolutionItems) = preProject
+		vs4mac_console1.sln = vs4mac_console1.sln
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C165BFE1-47DF-46F6-9B75-704F8421BCEC}.Debug|x86.ActiveCfg = Debug|x86
+		{C165BFE1-47DF-46F6-9B75-704F8421BCEC}.Debug|x86.Build.0 = Debug|x86
+		{C165BFE1-47DF-46F6-9B75-704F8421BCEC}.Release|x86.ActiveCfg = Release|x86
+		{C165BFE1-47DF-46F6-9B75-704F8421BCEC}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+EndGlobal
