@@ -42,6 +42,6 @@ The following list of blog posts includes a link to the part of the repo with th
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/CollectionViewSourceSample)
 * [Using Annotations to Assist ReSharper in Analyzing Your Code](https://grantwinney.com/using-annotations-to-help-resharper-analyze-your-code/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/UsingAnnotationsToAssistReSharper)
-* [What's a word cloud and how can I make one?](https://grantwinney.com/whats-a-word-cloud-and-how-can-i-make-one/)[💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/WordCloud)
+* [What's a word cloud and how do I make one?](https://grantwinney.com/whats-a-word-cloud-and-how-do-i-make-one/)[💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/WordCloud)
 * [When an assert isn't assertive enough (or using the wrong macro in an EUnit test)](https://grantwinney.com/when-an-assert-isnt-assertive-enough/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/EUnitAssertProblem)
