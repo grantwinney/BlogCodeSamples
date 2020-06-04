@@ -4,7 +4,7 @@ This repository contains some of the (usually lengthier) code samples from my bl
 
 The following list of blog posts includes a link to the part of the repo with the relevant code for that post.
 
-* A sample C# app for generating and verifying TOTP 2FA codes
+* [A sample C# app for generating and verifying TOTP 2FA codes](https://grantwinney.com/a-sample-csharp-app-for-generating-and-verifying-totp-2fa-codes/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/2FAQrCode)
 * [An explanation of implicit and explicit conversion in C#](https://grantwinney.com/an-explanation-of-implicit-and-explicit-conversion-in-c/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/ImplicitExplicitOperators022015)
@@ -22,6 +22,8 @@ The following list of blog posts includes a link to the part of the repo with th
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/ReadingConfigFile)
 * [Keep your EUnit teardown logic as simple as possible!](https://grantwinney.com/keep-your-eunit-teardown-logic-as-simple/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/MeckTeardownTest)
+* [Keep the plumbing out of my living room](https://grantwinney.com/keep-the-plumbing-out-of-my-living-room/)
+[💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/GetKnownFolders)
 * [Mocking Dependencies (silly dependency! um... not that kind of mocking)](https://grantwinney.com/mocking-dependencies-buahaha-silly-dependency-um-not-that-kind-of-mocking/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/MockingDependencies052014)
 * [Passing data between two Forms in WinForms](https://grantwinney.com/passing-data-between-two-forms-in-winforms/)
@@ -40,5 +42,6 @@ The following list of blog posts includes a link to the part of the repo with th
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/CollectionViewSourceSample)
 * [Using Annotations to Assist ReSharper in Analyzing Your Code](https://grantwinney.com/using-annotations-to-help-resharper-analyze-your-code/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/UsingAnnotationsToAssistReSharper)
+* [What's a word cloud and how can I make one?](https://grantwinney.com/whats-a-word-cloud-and-how-can-i-make-one/)[💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/WordCloud)
 * [When an assert isn't assertive enough (or using the wrong macro in an EUnit test)](https://grantwinney.com/when-an-assert-isnt-assertive-enough/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/EUnitAssertProblem)
