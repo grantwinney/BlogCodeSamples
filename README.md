@@ -45,3 +45,5 @@ The following list of blog posts includes a link to the part of the repo with th
 * [What's a word cloud and how do I make one?](https://grantwinney.com/whats-a-word-cloud-and-how-do-i-make-one/)[💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/WordCloud)
 * [When an assert isn't assertive enough (or using the wrong macro in an EUnit test)](https://grantwinney.com/when-an-assert-isnt-assertive-enough/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/EUnitAssertProblem)
+* [Why doesn't VS 2022 show my WinForms UI at design time?](http://grantwinney.com/why-doesnt-vs2022-show-my-winforms-ui/)
+[💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/WinFormsDesignerInVS2022)
