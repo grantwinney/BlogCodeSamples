@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Example 3 - Abstraction and Interfaces\**" />
+    <EmbeddedResource Remove="Example 3 - Abstraction and Interfaces\**" />
+    <None Remove="Example 3 - Abstraction and Interfaces\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="ColorSwatch.cs" />
+    <Compile Remove="Folder.cs" />
+  </ItemGroup>
+
+</Project>
