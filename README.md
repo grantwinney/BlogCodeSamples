@@ -19,7 +19,7 @@ The following list of blog posts includes a link to the part of the repo with th
 * Generic Math Support [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/GenericMathSupport)
   * Part 1 - [What's a static abstract interface method in C#?](https://grantwinney.com/whats-a-static-abstract-interface-method-in-c/)
   * Part 2 - [How do I overload arithmetic, equality, and comparison operators in C#?](https://grantwinney.com/how-do-i-overload-operators-in-csharp/)
-  * Part 3 - What is the new Generic Math support all about in C# 11?
+  * Part 3 - [What is Generic Math Support in C# 11?](https://grantwinney.com/whats-generic-math-support-in-csharp)
 * [How do I convert my code from C# to VB.NET (or from VB.NET to C#)?](https://grantwinney.com/how-do-i-convert-my-code-from-c-to-vb-net-or-vice-versa/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/CSharpAndVbNetTogether)
 * [How to use an application config file with a .NET Standard app and NUnit 3)](https://grantwinney.com/how-to-use-an-app-config-file-with-a-net-standard-app-and-nunit-3/)

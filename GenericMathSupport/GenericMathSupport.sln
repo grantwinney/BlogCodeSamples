@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericMathSupport", "Gener
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "TestProject\UnitTests.csproj", "{3BC3032E-EA50-4E3A-952D-D600FE57DA9F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsUI", "WinFormsUI\WinFormsUI.csproj", "{155CDFE8-E06E-419F-B865-DC929D0F82AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ColorSwatchUI", "WinFormsUI\ColorSwatchUI.csproj", "{155CDFE8-E06E-419F-B865-DC929D0F82AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
