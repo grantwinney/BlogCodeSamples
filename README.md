@@ -6,6 +6,8 @@ The following list of blog posts includes a link to the part of the repo with th
 
 * [A sample C# app for generating and verifying TOTP 2FA codes](https://grantwinney.com/a-sample-csharp-app-for-generating-and-verifying-totp-2fa-codes/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/2FAQrCode)
+* [Adding deconstructors to your own (and built-in) types in C#... is it worth it?](https://grantwinney.com/adding-deconstructors-in-csharp-is-it-worth-it/)
+[💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/DeconstructingUserDefinedTypes)
 * [An explanation of implicit and explicit conversion in C#](https://grantwinney.com/an-explanation-of-implicit-and-explicit-conversion-in-c/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/ImplicitExplicitOperators022015)
 * [An extension method for passing a column name to SqlDataReader.GetFieldValue in C#](https://grantwinney.com/an-extension-method-for-passing-a-column-name-to-sqldatareader-getfieldvalue-in-c/)
