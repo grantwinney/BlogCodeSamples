@@ -100,7 +100,8 @@ namespace NUnitConstraintModelTests
                 Assert.AreEqual(3, acme.Execs.Count);        // fail
                 Assert.Less(5, acme.Execs.Count);            // pass
                 Assert.Greater(10, acme.Execs.Count);        // fail
-                Assert.True(acme.CEO.Name.StartsWith("R"));  // fail
+                Assert.True(acme.CEO.Name.StartsWith("R")
+                    && acme.CEO.Name.EndsWith("n"));         // fail
             });
         }
 
@@ -116,11 +117,11 @@ namespace NUnitConstraintModelTests
 
             Assert.Multiple(() =>
             {
-                Assert.That(acme.Execs, Has.Count.EqualTo(2));       // pass
-                Assert.That(acme.Execs, Has.Count.EqualTo(3));       // fail
-                Assert.That(acme.Execs, Has.Count.LessThan(5));      // pass
-                Assert.That(acme.Execs, Has.Count.GreaterThan(10));  // fail
-                Assert.That(acme.CEO.Name, Does.StartWith("R"));     // fail
+                Assert.That(acme.Execs, Has.Count.EqualTo(2));                      // pass
+                Assert.That(acme.Execs, Has.Count.EqualTo(3));                      // fail
+                Assert.That(acme.Execs, Has.Count.LessThan(5));                     // pass
+                Assert.That(acme.Execs, Has.Count.GreaterThan(10));                 // fail
+                Assert.That(acme.CEO.Name, Does.StartWith("R").And.EndsWith("n"));  // fail
             });
         }
     }
