@@ -4,6 +4,8 @@ This repository contains some of the (usually lengthier) code samples from my bl
 
 The following list of blog posts includes a link to the part of the repo with the relevant code for that post.
 
+* [5 reasons to use NUnit's constraint model](https://grantwinney.com/5-reasons-to-use-nunits-constraint-model)
+[💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/NUnitConstraintModel)
 * [A sample C# app for generating and verifying TOTP 2FA codes](https://grantwinney.com/a-sample-csharp-app-for-generating-and-verifying-totp-2fa-codes/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/2FAQrCode)
 * [Adding deconstructors to your own (and built-in) types in C#... is it worth it?](https://grantwinney.com/adding-deconstructors-in-csharp-is-it-worth-it/)
