@@ -1,29 +1,21 @@
 # My Blog Code Samples
 
-This repository contains some of the (usually lengthier) code samples from my blog posts. I also tend to host shorter snippets on [Gist](https://gist.github.com/grantwinney) and [JsFiddle](https://jsfiddle.net/user/grantwinney/fiddles/), and embed them into posts.
+This repository contains some of the (usually lengthier) code samples from my blog posts. I sometimes host shorter snippets on [Gist](https://gist.github.com/grantwinney) or [JsFiddle](https://jsfiddle.net/user/grantwinney/fiddles/) and embed those into the posts.
 
-The following list of blog posts includes a link to the part of the repo with the relevant code for that post.
+The following list includes links to blog posts, as well as to the part of the repo with the relevant code for each post.
 
 * [5 reasons to use NUnit's constraint model](https://grantwinney.com/5-reasons-to-use-nunits-constraint-model)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/NUnitConstraintModel)
 * [A sample C# app for generating and verifying TOTP 2FA codes](https://grantwinney.com/a-sample-csharp-app-for-generating-and-verifying-totp-2fa-codes/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/2FAQrCode)
-* [Adding deconstructors to your own (and built-in) types in C#... is it worth it?](https://grantwinney.com/adding-deconstructors-in-csharp-is-it-worth-it/)
-[💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/DeconstructingUserDefinedTypes)
 * [An explanation of implicit and explicit conversion in C#](https://grantwinney.com/an-explanation-of-implicit-and-explicit-conversion-in-c/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/ImplicitExplicitOperators022015)
 * [An extension method for passing a column name to SqlDataReader.GetFieldValue in C#](https://grantwinney.com/an-extension-method-for-passing-a-column-name-to-sqldatareader-getfieldvalue-in-c/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/SqlDataReaderGetFieldValueByName)
-* [Async and PLINQ](https://grantwinney.com/async-and-plinq/)
-[💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/AsyncAndPlinq112013)
 * [Cool markdown tricks for GitHub](https://grantwinney.com/cool-markdown-tricks-for-github/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/GitHubTipsTricks)
 * [Discover where the ISS is, where it will be, and who's on it with the ISS Notify API](https://grantwinney.com/day-11-iss-notify-api/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/IssNotifyApiWrapper)
-* Generic Math Support [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/GenericMathSupport)
-  * Part 1 - [What's a static abstract interface method in C#?](https://grantwinney.com/whats-a-static-abstract-interface-method-in-c/)
-  * Part 2 - [How do I overload arithmetic, equality, and comparison operators in C#?](https://grantwinney.com/how-do-i-overload-operators-in-csharp/)
-  * Part 3 - [What is Generic Math Support in C# 11?](https://grantwinney.com/whats-generic-math-support-in-csharp)
 * [How do I convert my code from C# to VB.NET (or from VB.NET to C#)?](https://grantwinney.com/how-do-i-convert-my-code-from-c-to-vb-net-or-vice-versa/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/CSharpAndVbNetTogether)
 * [How to use an application config file with a .NET Standard app and NUnit 3)](https://grantwinney.com/how-to-use-an-app-config-file-with-a-net-standard-app-and-nunit-3/)
