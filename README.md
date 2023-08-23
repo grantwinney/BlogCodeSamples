@@ -28,8 +28,6 @@ The following list includes links to blog posts, as well as to the part of the r
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/MockingDependencies)
 * [Passing data between two Forms in WinForms](https://grantwinney.com/passing-data-between-two-forms-in-winforms/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/PassingDataBetweenForms)
-* [Practical Examples of C# Attributes](https://grantwinney.com/5-examples-of-attributes-in-c-and-why-youll-want-to-make-your-own/)
-[💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/AttributesExamples)
 * [Querying Amazon's product details with the Amazon Product Advertising API](https://grantwinney.com/querying-amazon-product-details-with-the-amazon-product-advertising-api/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/AmazonProductAdvertisingApiBlogPost)
 * [Running Windows XP in VirtualBox](https://grantwinney.com/running-windows-xp-in-virtualbox/)
