@@ -32,6 +32,8 @@ The following list includes links to blog posts, as well as to the part of the r
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/AmazonProductAdvertisingApiBlogPost)
 * [Running Windows XP in VirtualBox](https://grantwinney.com/running-windows-xp-in-virtualbox/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/WindowsXPVisualStudio)
+* [Similar endpoints, swagger pages, and a DevOps fail](https://grantwinney.com/similar-endpoints-swagger-pages-and-a-devops-fail)
+[💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/MinimalAPIWithSimilarEndpoints)
 * [The effect of the Obsolete attribute on a class is ignored when there's an interface involved](https://grantwinney.com/the-effect-of-the-obsolete-attribute-on-a-class-is-ignored-when-theres-an-interface-involved/)
 [💾](https://github.com/grantwinney/BlogCodeSamples/tree/master/ObsoleteAttributeOnInterfaces022015)
 * [A briefly longish tour of Visual Studio for Mac](https://grantwinney.com/a-brief-tour-of-visual-studio-for-mac/)
