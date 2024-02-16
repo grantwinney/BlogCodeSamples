@@ -1,6 +1,6 @@
 # Code Samples - Grant's Blog
 
-This repository contains some code samples from [my blog posts ([blog](https://grantwinney.com). I sometimes upload code to separate repos (like for [C# / .NET](https://github.com/grantwinney/CSharpDotNetExamples) and [WinForms](https://github.com/grantwinney/Surviving-WinForms)), or to [Gist](https://gist.github.com/grantwinney) or [JsFiddle](https://jsfiddle.net/user/grantwinney/fiddles/) for shorter snippets.
+This repository contains some code samples from [my blog posts](https://grantwinney.com). I sometimes upload code to separate repos (like for [C# / .NET](https://github.com/grantwinney/CSharpDotNetExamples) and [WinForms](https://github.com/grantwinney/Surviving-WinForms)), or to [Gist](https://gist.github.com/grantwinney) or [JsFiddle](https://jsfiddle.net/user/grantwinney/fiddles/) for shorter snippets.
 
 The list below has a link to each blog post, followed by the relevant code for that post.
 
