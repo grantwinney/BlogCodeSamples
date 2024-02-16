@@ -7,7 +7,6 @@ The list below has a link to each blog post, followed by the relevant code for t
 # APIs
 
 * Discover where the ISS is, where it will be, and who's on it with the ISS Notify API ([blog](https://grantwinney.com/what-is-iss-notify-api/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/APIs/IssNotifyApiWrapper))
-* Querying Amazon's product details with the Amazon Product Advertising API ([blog](https://grantwinney.com/querying-amazon-product-details-with-the-amazon-product-advertising-api/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/APIs/AmazonProductAdvertisingApiBlogPost))
 
 # Dev Tools
 
