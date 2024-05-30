@@ -1,3 +1,1 @@
-Passing data between two Forms in WinForms
-
-http://grantwinney.com/passing-data-between-two-forms-in-winforms/
+[Passing Data Between Forms in WinForms](https://grantwinney.com/passing-data-between-two-forms-in-winforms/)

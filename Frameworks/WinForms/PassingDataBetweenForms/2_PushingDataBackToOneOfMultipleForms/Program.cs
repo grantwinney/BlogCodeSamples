@@ -13,7 +13,7 @@ namespace PushingDataBackToOneOfMultipleForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new EmployeeForm());
+            Application.Run(new ParentForm1());
         }
     }
 }

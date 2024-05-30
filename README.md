@@ -22,11 +22,11 @@ The list below has a link to each blog post, followed by the relevant code for t
 
 ## WinForms
 
-* Passing data between two Forms in WinForms ([blog](https://grantwinney.com/passing-data-between-two-forms-in-winforms/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/Frameworks/WinForms/PassingDataBetweenForms))
+* Passing Data Between Forms in WinForms ([blog](https://grantwinney.com/passing-data-between-two-forms-in-winforms/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/Frameworks/WinForms/PassingDataBetweenForms))
 
 ## WPF
 
-* Using a TextBox and CollectionViewSource to Filter a ListView in WPF ([blog](https://grantwinney.com/using-a-textbox-and-collectionviewsource-to-filter-a-listview-in-wpf/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/Frameworks/WPF/CollectionViewSourceSample))
+* Filtering a ListView in WPF Using a TextBox and CollectionViewSource ([blog](https://grantwinney.com/wpf-filtering-listview-using-textbox-and-collectionviewsource/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/Frameworks/WPF/CollectionViewSourceSample))
 
 # Languages
 

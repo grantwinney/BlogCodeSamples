@@ -37,13 +37,13 @@
             // 
             // btnSaveInput
             // 
+            this.btnSaveInput.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnSaveInput.Location = new System.Drawing.Point(102, 110);
             this.btnSaveInput.Name = "btnSaveInput";
             this.btnSaveInput.Size = new System.Drawing.Size(75, 23);
             this.btnSaveInput.TabIndex = 0;
             this.btnSaveInput.Text = "Save Input";
             this.btnSaveInput.UseVisualStyleBackColor = true;
-            this.btnSaveInput.Click += new System.EventHandler(this.btnSaveInput_Click);
             // 
             // txtName
             // 
@@ -79,6 +79,7 @@
             // 
             // DetailForm
             // 
+            this.AcceptButton = this.btnSaveInput;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
@@ -87,6 +88,7 @@
             this.Controls.Add(this.txtAge);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.btnSaveInput);
+            this.Name = "DetailForm";
             this.Text = "DetailForm";
             this.ResumeLayout(false);
             this.PerformLayout();

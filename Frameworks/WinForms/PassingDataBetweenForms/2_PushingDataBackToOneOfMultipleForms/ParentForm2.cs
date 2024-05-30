@@ -3,19 +3,18 @@ using System.Windows.Forms;
 
 namespace PushingDataBackToOneOfMultipleForms
 {
-    public partial class StudentForm : Form
+    public partial class ParentForm2 : Form
     {
-        public StudentForm()
+        public ParentForm2()
         {
             InitializeComponent();
         }
 
         private void btnGetUserInput_Click(object sender, EventArgs e)
         {
-            // Notice the 'using' statement. It helps ensure you clean up resources.
-            using (var form2 = new DetailForm(this))
+            using (var childForm = new ChildForm(this))
             {
-                form2.ShowDialog();
+                childForm.ShowDialog();
             }
         }
 

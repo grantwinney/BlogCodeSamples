@@ -1,3 +1,1 @@
-Using the CollectionViewSource to filter results in a ListView
-
-http://grantwinney.com/using-a-textbox-and-collectionviewsource-to-filter-a-listview-in-wpf/
+[Filtering a ListView in WPF Using a TextBox and CollectionViewSource](https://grantwinney.com/wpf-filtering-listview-using-textbox-and-collectionviewsource/)
