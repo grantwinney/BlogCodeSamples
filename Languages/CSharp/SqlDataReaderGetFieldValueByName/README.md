@@ -1,3 +1,1 @@
-An extension method for passing a column name to SqlDataReader.GetFieldValue in C#
-
-http://grantwinney.com/an-extension-method-for-passing-a-column-name-to-sqldatareader-getfieldvalue-in-c/
+[An Extension Method to Pass a Column Name to SqlDataReader.GetFieldValue](http://grantwinney.com/csharp-extension-method-to-pass-column-name-to-getfieldvalue/)

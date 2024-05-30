@@ -32,7 +32,7 @@ The list below has a link to each blog post, followed by the relevant code for t
 
 ## C#
 
-* An extension method for passing a column name to SqlDataReader.GetFieldValue in C# ([blog](https://grantwinney.com/an-extension-method-for-passing-a-column-name-to-sqldatareader-getfieldvalue-in-c/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/Languages/CSharp/SqlDataReaderGetFieldValueByName))
+* An Extension Method to Pass a Column Name to SqlDataReader.GetFieldValue ([blog](https://grantwinney.com/csharp-extension-method-to-pass-column-name-to-getfieldvalue/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/Languages/CSharp/SqlDataReaderGetFieldValueByName))
 * How do I convert my code from C# to VB.NET (or from VB.NET to C#)? ([blog](https://grantwinney.com/how-do-i-convert-my-code-from-c-to-vb-net-or-vice-versa/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/CSharpAndVbNetTogether))
 * How to generate and verify TOTP 2FA codes (in C#) ([blog](https://grantwinney.com/a-sample-csharp-app-for-generating-and-verifying-totp-2fa-codes/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/Languages/CSharp/2FAQrCode))
 * The Obsolete attribute on a class is ignored when an interface is involved ([blog](https://grantwinney.com/the-effect-of-the-obsolete-attribute-on-a-class-is-ignored-when-theres-an-interface-involved/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/Languages/CSharp/ObsoleteAttributeOnInterfaces))
