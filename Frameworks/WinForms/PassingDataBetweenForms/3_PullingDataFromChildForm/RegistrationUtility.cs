@@ -6,7 +6,7 @@ namespace PullingDataFromChildForm
     {
         public void SomeMethod()
         {
-            using (var detailForm = new DetailForm())
+            using (var detailForm = new ChildForm())
             {
                 detailForm.ShowDialog();
 

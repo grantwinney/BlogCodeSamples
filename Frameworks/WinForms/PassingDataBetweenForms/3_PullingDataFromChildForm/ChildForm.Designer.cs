@@ -1,6 +1,6 @@
 ﻿namespace PullingDataFromChildForm
 {
-    partial class DetailForm
+    partial class ChildForm
     {
         /// <summary>
         /// Required designer variable.

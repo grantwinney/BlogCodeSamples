@@ -2,9 +2,9 @@
 
 namespace PullingDataFromChildForm
 {
-    public partial class DetailForm : Form
+    public partial class ChildForm : Form
     {
-        public DetailForm()
+        public ChildForm()
         {
             InitializeComponent();
         }

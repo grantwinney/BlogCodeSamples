@@ -44,32 +44,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DetailForm.cs">
+    <Compile Include="ChildForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DetailForm.Designer.cs">
-      <DependentUpon>DetailForm.cs</DependentUpon>
+    <Compile Include="ChildForm.Designer.cs">
+      <DependentUpon>ChildForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmployeeForm.cs">
+    <Compile Include="ParentForm1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmployeeForm.Designer.cs">
-      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    <Compile Include="ParentForm1.Designer.cs">
+      <DependentUpon>ParentForm1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrationUtility.cs" />
-    <Compile Include="StudentForm.cs">
+    <Compile Include="ParentForm2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StudentForm.Designer.cs">
-      <DependentUpon>StudentForm.cs</DependentUpon>
+    <Compile Include="ParentForm2.Designer.cs">
+      <DependentUpon>ParentForm2.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DetailForm.resx">
-      <DependentUpon>DetailForm.cs</DependentUpon>
+    <EmbeddedResource Include="ChildForm.resx">
+      <DependentUpon>ChildForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmployeeForm.resx">
-      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    <EmbeddedResource Include="ParentForm1.resx">
+      <DependentUpon>ParentForm1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -81,8 +81,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="StudentForm.resx">
-      <DependentUpon>StudentForm.cs</DependentUpon>
+    <EmbeddedResource Include="ParentForm2.resx">
+      <DependentUpon>ParentForm2.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
