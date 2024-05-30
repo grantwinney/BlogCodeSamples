@@ -1,55 +1,65 @@
 ﻿using System;
 
-namespace ObsoleteAttributeOnInterfaces
+namespace ObsoleteAttributeOnInterfaces;
+
+public static class Program
 {
-    public static class Program
+    public static void Main()
     {
-        public static void Main()
-        {
-            ISampleClass sc1 = new SampleClass();
-            sc1.SomeOldMethod();
+        IAnimal penguin = new Penguin();
+        penguin.Move();
 
-            ISampleClass sc2 = new SampleClass2();
-            sc2.SomeOldMethod();
+        IAnimal dog = new Dog();
+        dog.Move();
 
-            ISampleClass sc3 = new SampleClass3();
-            sc3.SomeOldMethod();
+        IAnimal fish = new Fish();
+        fish.Move();
 
 
 
-            SampleClass sc = new SampleClass();
-            sc.SomeOldMethod();
+        IAnimal dinosaur = new Dinosaur();
+        dinosaur.Move();
 
-        }
+        //Dinosaur dino = new Dinosaur();
+        //dino.Move();
+
     }
+}
 
-    public interface ISampleClass
+public interface IAnimal
+{
+    void Move();
+}
+
+public class Penguin : IAnimal
+{
+    public void Move()
     {
-        void SomeOldMethod();
+        Console.WriteLine("The penguin waddled.");
     }
+}
 
-    public class SampleClass : ISampleClass
+public class Dog : IAnimal
+{
+    public void Move()
     {
-        [Obsolete("This is the old way. No one uses it anymore. Shame on you!!", true)]
-        public void SomeOldMethod()
-        {
-            // This is old. I should probably remove and refactor, but I'm too scared.
-        }
+        Console.WriteLine("The dog walked.");
     }
+}
 
-    public class SampleClass2 : ISampleClass
+public class Fish : IAnimal
+{
+    public void Move()
     {
-        public void SomeOldMethod()
-        {
-            // Old, but not obsolete.
-        }
+        Console.WriteLine("The fish swam.");
     }
+}
 
-    public class SampleClass3 : ISampleClass
+public class Dinosaur : IAnimal
+{
+    [Obsolete("Dinos don't move anymore", true)]
+    public void Move()
     {
-        public void SomeOldMethod()
-        {
-            // Why mess with perfection?
-        }
+        Console.WriteLine("The dino, uh... remained still.");
     }
 }
