@@ -1,0 +1,43 @@
+[alias]
+  co = checkout
+  cob = checkout -b
+  ci = commit -m
+  ec = config --global --edit
+  st = status
+  br = branch
+  df = diff
+  re = checkout .
+  pop = stash pop
+  rclone = clone --recursive
+
+  # recursively pull repo and its submodule (if any)
+  rpull = !git pull && git submodule update --init --recursive
+
+  # list commits in short form, with colors and branch/tag annotations
+  hist = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cgreen\\ [%cn]" --decorate --date=short
+  hsit = !git hist
+
+  # similar to hist but includes a list of files changed in commit
+  histf = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cgreen\\ [%cn]" --decorate --numstat
+  hsitf = !git histf
+
+  # graph view of a project's commit history
+  histg = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+  hsitg = !git histg
+
+  # add and commit changes, with and without a message
+  ac = !git add . && git commit -m \"$1\" && :
+  acnc = !git add . && git commit --allow-empty-message -m \"\"
+
+  # add and commit AND PUSH changes, with and without a message
+  shove = !git add . && git commit -m \"$1\" && git push origin && :
+  shovenc = !git add . && git commit --allow-empty-message -m \"\" && git push origin
+
+  # display your currently defined aliases
+  aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+
+  # pass in the name or email address of someone involved with the project
+  whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+
+  # open the url for the current repo in the browser
+  browse = "!open `git remote -v | grep fetch | awk '{print $2}' | sed 's=git@=https://=' | sed 's=com:=com/='`"

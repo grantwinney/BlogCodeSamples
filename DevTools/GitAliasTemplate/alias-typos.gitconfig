@@ -1,0 +1,15 @@
+[alias]
+  upsh = push
+  psuh = push
+  puhs = push
+  pushh = push
+  pll = pull
+  pul = pull
+  pulll = pull
+  puill = pull
+  commti = commit
+  comtmi = commit
+  cmmit = commit
+  comit = commit
+  committ = commit
+  stauts = status
