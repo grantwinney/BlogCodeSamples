@@ -1,0 +1,10 @@
+{
+    "name": "My First Extension",
+    "version": "1.0",
+    "manifest_version": 2,
+
+    "background": {
+        "scripts": ["helloworld.js"]
+    },
+    "browser_action": {}
+}

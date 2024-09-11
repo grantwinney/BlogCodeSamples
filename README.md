@@ -49,5 +49,6 @@ The list below has a link to each blog post, followed by the relevant code for t
 
 # Misc
 
+* Creating Your First Chrome Extension ([blog](https://grantwinney.com/making-your-first-chrome-extension/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/Misc/ChromeExtensionSamples))
 * Running Windows XP in VirtualBox ([blog](https://grantwinney.com/running-windows-xp-in-virtualbox/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/Misc/WindowsXPVisualStudio))
 * Where should I store application data in Windows? ([blog](https://grantwinney.com/where-should-i-store-app-data-in-windows/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/Misc/GetKnownFolders))

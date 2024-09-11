@@ -1,0 +1,11 @@
+{
+    "name": "Options Please",
+    "version": "1.0",
+    "manifest_version": 2,
+
+    "options_page": "options.html",
+
+    "permissions": [
+        "storage"
+    ]
+}
