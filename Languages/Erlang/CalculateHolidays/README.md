@@ -8,7 +8,7 @@ To use it, just pass in the [2-letter country code](https://www.worldatlas.com/a
 
 There's a separate module with dozens of tests to validate each holiday, so hopefully everything is okay.
 
-If you see anything that looks wrong, or have new holidays to add, either [open a new issue](https://github.com/grantwinney/BlogCodeSamples/issues/new?title=Issue with Erlang holidays script) with as many details as possible or [create a new PR](https://github.com/grantwinney/BlogCodeSamples/pulls).
+If you see anything that looks wrong, or have new holidays to add, either <a href="https://github.com/grantwinney/BlogCodeSamples/issues/new?title=Issue with Erlang holidays script">open a new issue</a> with as many details as possible or [create a new PR](https://github.com/grantwinney/BlogCodeSamples/pulls).
 
 ## Running EUnit Tests
 
