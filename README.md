@@ -43,6 +43,7 @@ The list below has a link to each blog post, followed by the relevant code for t
 
 ## Erlang
 
+* Calculate Easter and other holidays in Erlang ([blog](https://grantwinney.com/how-to-calculate-easter-and-other-holidays-in-erlang/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/Languages/Erlang/CalculateHolidays))
 * Keep your EUnit teardown logic as simple as possible! ([blog](https://grantwinney.com/keep-your-eunit-teardown-logic-as-simple/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/Languages/Erlang/MeckTeardownTest))
 * Modify a config file in Erlang ([blog](https://grantwinney.com/how-to-modify-a-config-file-in-erlang/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/Languages/Erlang/ConfigFileModifier))
 
