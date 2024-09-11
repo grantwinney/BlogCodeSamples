@@ -13,6 +13,7 @@ The list below has a link to each blog post, followed by the relevant code for t
 * Can I compare files using VS Code? ([blog](https://grantwinney.com/how-to-compare-files-using-vs-code/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/DevTools/CompareInVSCode))
 * Cool markdown tricks for GitHub ([blog](https://grantwinney.com/cool-markdown-tricks-for-github/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/DevTools/GitHubTipsTricks))
 * Why doesn't VS 2022 show my WinForms UI at design time? ([blog](http://grantwinney.com/why-doesnt-vs2022-show-my-winforms-ui/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/DevTools/WinFormsDesignerInVS2022))
+* What is a Git alias? ([blog(https://grantwinney.com/what-is-a-git-alias-and-how-do-i-use-it/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/DevTools/GitAliasTemplate)])
 
 # Frameworks
 
@@ -43,6 +44,7 @@ The list below has a link to each blog post, followed by the relevant code for t
 ## Erlang
 
 * Keep your EUnit teardown logic as simple as possible! ([blog](https://grantwinney.com/keep-your-eunit-teardown-logic-as-simple/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/Languages/Erlang/MeckTeardownTest))
+* Modify a config file in Erlang ([blog](https://grantwinney.com/how-to-modify-a-config-file-in-erlang/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/Languages/Erlang/ConfigFileModifier))
 
 # Misc
 
