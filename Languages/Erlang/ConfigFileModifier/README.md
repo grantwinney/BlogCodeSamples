@@ -9,4 +9,4 @@ There are only 4 functions:
 
 There's a sample config file and erl module, which you can compile and call its functions, to see how it affects the config file.
 
-If you have a problem, question, or a better way to do this, <a href="https://github.com/grantwinney/BlogCodeSamples/issues/new?title=Issue regarding Erlang config file script">let me know</a>!
+If you have a problem, question, or a better way to do this, [let me know](https://github.com/grantwinney/BlogCodeSamples/issues/new?title=Issue regarding Erlang config file script)!
