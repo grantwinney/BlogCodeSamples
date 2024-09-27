@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TweetRandomFeedItem", "TweetRandomFeedItem\TweetRandomFeedItem.csproj", "{A65ED552-1655-436F-B2F5-C41F35DE00F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TweetRandomFeedItemTests", "TweetRandomFeedItemTests\TweetRandomFeedItemTests.csproj", "{E74EA8AD-34AD-488B-8D56-9A5B3D7DA940}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A65ED552-1655-436F-B2F5-C41F35DE00F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A65ED552-1655-436F-B2F5-C41F35DE00F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A65ED552-1655-436F-B2F5-C41F35DE00F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A65ED552-1655-436F-B2F5-C41F35DE00F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E74EA8AD-34AD-488B-8D56-9A5B3D7DA940}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E74EA8AD-34AD-488B-8D56-9A5B3D7DA940}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E74EA8AD-34AD-488B-8D56-9A5B3D7DA940}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E74EA8AD-34AD-488B-8D56-9A5B3D7DA940}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {55609BE2-7144-430D-A555-6E134855C7F0}
+	EndGlobalSection
+EndGlobal

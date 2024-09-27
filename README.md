@@ -51,4 +51,6 @@ The list below has a link to each blog post, followed by the relevant code for t
 
 * Creating Your First Chrome Extension ([blog](https://grantwinney.com/making-your-first-chrome-extension/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/Misc/ChromeExtensionSamples))
 * Running Windows XP in VirtualBox ([blog](https://grantwinney.com/running-windows-xp-in-virtualbox/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/Misc/WindowsXPVisualStudio))
+* Tweet random posts from a Ghost blog using AWS Lambda ([blog](https://grantwinney.com/using-aws-lambda-and-tweetinvi-to-tweet-a-random-ghost-blog-post/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/Misc/TweetRandomPostFromAGhostBlog))
+* Tweet random blog posts from an RSS feed using AWS Lambda ([blog](https://grantwinney.com/using-aws-lambda-to-tweet-random-posts-from-an-rss-feed/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/Misc/TweetRandomFeedItem))
 * Where should I store application data in Windows? ([blog](https://grantwinney.com/where-should-i-store-app-data-in-windows/), [code](https://github.com/grantwinney/BlogCodeSamples/tree/master/Misc/GetKnownFolders))
