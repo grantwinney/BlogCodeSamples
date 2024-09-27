@@ -19,9 +19,9 @@ If you'd like to read more about it, [I wrote a blog post about it too](https://
 
 ### Setting up AWS Lambda
 
-Now you need to create a new AWS Lambda job. [Check this out](https://vickylai.com/verbose/free-twitter-bot-aws-lambda/#setting-up-aws-lambda) for a brief intro to setting up a job.
+Now you need to create a new AWS Lambda job. [Check this out](https://victoria.dev/archive/running-a-free-twitter-bot-on-aws-lambda/#setting-up-aws-lambda) for a brief intro to setting up a job.
 
-1. Create a new function and choose `C# (.NET Core 2.0)` for the runtime.
+1. Create a new function and choose `C# (.NET Core 2.0)` for the runtime. _(this may change as new versions are released)_
 2. The name of the function, and the role it makes you create, don't matter.
 3. Upload the zip file you created above.
 4. Set the handler as `TweetRandomFeedItem::TweetRandomFeedItem.Program::Main`
