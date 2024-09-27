@@ -2,7 +2,7 @@
 
 ***Using [AWS Lambda](https://aws.amazon.com/lambda/) and [Tweetinvi](https://github.com/linvi/tweetinvi)***
 
-This project is a slight modification of [my last one](TweetRandomFeedItemForGhost), replacing reading posts via the Ghost API to a more general parsing of RSS feeds. I wanted to create something that would work for *any* blog... or anything else that generates an RSS feed.
+This project is a slight modification of [my last one](https://github.com/grantwinney/BlogCodeSamples/tree/master/Misc/TweetRandomPostFromAGhostBlog), replacing reading posts via the Ghost API to a more general parsing of RSS feeds. I wanted to create something that would work for *any* blog... or anything else that generates an RSS feed.
 
 ## Usage
 
