@@ -2,23 +2,20 @@
 
 ***Using [AWS Lambda](https://aws.amazon.com/lambda/) and [Tweetinvi](https://github.com/linvi/tweetinvi)***
 
-This project is a slight modification of [my last one](https://github.com/grantwinney/TweetRandomFeedItemForGhost), replacing reading posts via the Ghost API to a more general parsing of RSS feeds. I wanted to create something that would work for *any* blog... or anything else that generates an RSS feed.
-
-My first experience with AWS Lambda was [using Ephemeral to clean up my Twitter feed](https://grantwinney.com/my-first-experience-with-aws-lambda/), but I wanted to try writing my own app for AWS Lambda, and I wanted to do it in C#. I've also had an idea for awhile now that it'd be nice to be able to randomly select and tweet my old blog posts.
+This project is a slight modification of [my last one](TweetRandomFeedItemForGhost), replacing reading posts via the Ghost API to a more general parsing of RSS feeds. I wanted to create something that would work for *any* blog... or anything else that generates an RSS feed.
 
 ## Usage
 
-So here it is, a C# console you can run from AWS Lambda. Schedule it to run as often as you like using Lambda's [cron scheduling](https://docs.aws.amazon.com/lambda/latest/dg/tutorial-scheduled-events-schedule-expressions.html) capabilities.
+This is a C# console you can run from AWS Lambda. Schedule it to run as often as you like using Lambda's [cron scheduling](https://docs.aws.amazon.com/lambda/latest/dg/tutorial-scheduled-events-schedule-expressions.html) capabilities.
 
 If you'd like to read more about it, [I wrote a blog post about it too](https://grantwinney.com/using-aws-lambda-to-tweet-random-posts-from-an-rss-feed/).
 
 ### Getting the code
 
-1. Clone the repo: `git clone git@github.com:grantwinney/TweetRandomFeedItem.git`
-2. Open the project in Visual Studio.
-3. Build the project _(you may have to right-click the NuGet folder and choose 'restore' to download the dependencies, although VS usually takes care of that for you)_
-4. Find the `bin` directory on disk, and drill down until you get to the assemblies (dll files). Most likely: `bin/Debug/netcoreapp2.0`
-5. Zip up the contents of the inner-most directory, but not the directory itself. _(e.g. just select all the files_ inside _`netcoreapp2.0`.)_
+1. Clone this repo: `git clone https://github.com/grantwinney/BlogCodeSamples.git`
+2. Find the project under "Misc/TweetRandomFeedItem" and build it, either in Visual Studio or at the command line.
+3. Find the `bin` directory on disk, and drill down until you get to the assemblies (dll files). Most likely: `bin/Debug/netcoreapp2.0`
+4. Zip up the contents of the inner-most directory, but not the directory itself. _(e.g. just select all the files_ inside _`netcoreapp2.0`.)_
 
 ### Setting up AWS Lambda
 
