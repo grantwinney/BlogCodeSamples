@@ -1,0 +1,398 @@
+<style type="text/css">
+    #root {
+        text-align: center;
+    }
+    #readout {
+        font-size: smaller;
+    }
+</style>
+
+<div id="root">
+    <pre id="viewport" tabindex="0"></pre>
+    <div id="readout"></div><br>
+    <form onsubmit="return false">
+        <button onclick="turn(-1);">Left</button>
+        <button onclick="turn(1);">Right</button>
+        <button onclick="moveForward();">Forward</button>
+        <button onclick="moveBack();">Back</button><br>
+        <button onclick="cheat();"><u>C</u>heat</button>
+        <button onclick="start();"><u>R</u>eset</button>
+    </form>
+</div>
+
+<script type="text/javascript">
+    // Original: Jason Hotchkiss (jasonhotchkiss@home.com) - Dec 6, 1999
+    // Source: https://web.archive.org/web/20000815215258/http://javascript.internet.com/games/maze.html
+
+    // Begin
+    // The binary data for the maze
+    const map = [
+        [255, 255, 255, 255, 255, 255, 255, 255],
+        [162, 8, 3, 248, 0, 0, 0, 17],
+        [136, 162, 235, 251, 254, 237, 221, 213],
+        [187, 190, 10, 170, 162, 68, 136, 149],
+        [136, 130, 186, 170, 171, 86, 170, 181],
+        [238, 250, 130, 0, 10, 68, 136, 149],
+        [130, 130, 30, 255, 250, 238, 221, 213],
+        [186, 190, 248, 128, 2, 137, 17, 21],
+        [168, 32, 2, 42, 174, 187, 119, 117],
+        [139, 239, 235, 170, 226, 34, 68, 69],
+        [250, 40, 32, 170, 42, 190, 255, 213],
+        [130, 234, 182, 162, 170, 138, 0, 21],
+        [170, 136, 34, 62, 170, 34, 255, 253],
+        [168, 191, 168, 160, 131, 234, 162, 35],
+        [175, 160, 170, 175, 170, 14, 186, 233],
+        [168, 42, 42, 234, 170, 224, 130, 37],
+        [163, 171, 162, 0, 34, 63, 187, 181],
+        [190, 34, 63, 127, 254, 138, 160, 133],
+        [162, 234, 160, 16, 34, 40, 189, 85],
+        [138, 170, 175, 213, 226, 238, 165, 125],
+        [248, 162, 40, 84, 34, 8, 8, 37],
+        [130, 43, 171, 85, 163, 235, 251, 169],
+        [175, 234, 33, 20, 130, 9, 1, 15],
+        [160, 66, 173, 246, 174, 253, 125, 97],
+        [191, 94, 32, 162, 32, 5, 69, 45],
+        [162, 75, 234, 43, 238, 213, 21, 105],
+        [168, 106, 42, 238, 2, 17, 68, 37],
+        [175, 202, 130, 2, 171, 95, 95, 141],
+        [168, 154, 254, 190, 171, 113, 18, 213],
+        [130, 2, 0, 128, 2, 4, 70, 5],
+        [255, 255, 255, 255, 255, 255, 255, 255]
+    ];
+
+    // === State ===
+    let aspect = [];
+    let view = [];
+
+    const exitx = 24;
+    const exity = 57;
+    let xpos, ypos, dir, mapon, steps, cheats;
+
+    // DOM refs
+    let viewportEl;
+    let readoutEl;
+
+    // === Helpers ===
+    function getGrid(x, y) {
+        if (x < 0 || x > 30 || y < 0 || y > 63) return true;
+        const byte = map[x][Math.floor(y / 8)];
+        const mask = 128 >>> (y % 8);
+        return (byte & mask) > 0;
+    }
+
+    function render(col, len, data) {
+        for (let i = 0; i < 14; ++i) {
+            const row = view[i];
+            view[i] = row.slice(0, col) + data[i] + row.slice(col + len);
+        }
+    }
+
+    function draw() {
+        mapon = false;
+        let atexit = false;
+
+        // Fill aspect based on direction
+        switch (dir) {
+            case 0: // north
+                aspect = [
+                    getGrid(xpos, ypos - 1), getGrid(xpos, ypos + 1), getGrid(xpos - 1, ypos - 1),
+                    getGrid(xpos - 1, ypos), getGrid(xpos - 1, ypos + 1), getGrid(xpos - 2, ypos - 1),
+                    getGrid(xpos - 2, ypos), getGrid(xpos - 2, ypos + 1), getGrid(xpos - 3, ypos - 1),
+                    getGrid(xpos - 3, ypos), getGrid(xpos - 3, ypos + 1), getGrid(xpos - 4, ypos)
+                ];
+                atexit = (xpos === exitx + 1 && ypos === exity);
+                break;
+            case 1: // east
+                aspect = [
+                    getGrid(xpos - 1, ypos), getGrid(xpos + 1, ypos), getGrid(xpos - 1, ypos + 1),
+                    getGrid(xpos, ypos + 1), getGrid(xpos + 1, ypos + 1), getGrid(xpos - 1, ypos + 2),
+                    getGrid(xpos, ypos + 2), getGrid(xpos + 1, ypos + 2), getGrid(xpos - 1, ypos + 3),
+                    getGrid(xpos, ypos + 3), getGrid(xpos + 1, ypos + 3), getGrid(xpos, ypos + 4)
+                ];
+                atexit = (xpos === exitx && ypos === exity - 1);
+                break;
+            case 2: // south
+                aspect = [
+                    getGrid(xpos, ypos + 1), getGrid(xpos, ypos - 1), getGrid(xpos + 1, ypos + 1),
+                    getGrid(xpos + 1, ypos), getGrid(xpos + 1, ypos - 1), getGrid(xpos + 2, ypos + 1),
+                    getGrid(xpos + 2, ypos), getGrid(xpos + 2, ypos - 1), getGrid(xpos + 3, ypos + 1),
+                    getGrid(xpos + 3, ypos), getGrid(xpos + 3, ypos - 1), getGrid(xpos + 4, ypos)
+                ];
+                atexit = (xpos === exitx - 1 && ypos === exity);
+                break;
+            case 3: // west
+                aspect = [
+                    getGrid(xpos + 1, ypos), getGrid(xpos - 1, ypos), getGrid(xpos + 1, ypos - 1),
+                    getGrid(xpos, ypos - 1), getGrid(xpos - 1, ypos - 1), getGrid(xpos + 1, ypos - 2),
+                    getGrid(xpos, ypos - 2), getGrid(xpos - 1, ypos - 2), getGrid(xpos + 1, ypos - 3),
+                    getGrid(xpos, ypos - 3), getGrid(xpos - 1, ypos - 3), getGrid(xpos, ypos - 4)
+                ];
+                atexit = (xpos === exitx && ypos === exity + 1);
+                break;
+        }
+
+        // Base view
+        view = [
+            "\\                         /",
+            "  \\                     /  ",
+            "    \\                 /    ",
+            "      \\             /      ",
+            "        \\         /        ",
+            "          \\     /          ",
+            "            \\ /            ",
+            "            / \\            ",
+            "          /     \\          ",
+            "        /         \\        ",
+            "      /             \\      ",
+            "    /                 \\    ",
+            "  /                     \\  ",
+            "/                         \\"
+        ];
+
+        // Walls
+        if (!aspect[0])
+            render(0, 3, [
+                "   ", "==\\", "..|", "..|", "..|", "..|", "..|", "..|", "..|", "..|", "..|", "..|", "==/", "   "
+            ]);
+
+        if (!aspect[1])
+            render(24, 3, [
+                "   ", "/==", "|..", "|..", "|..", "|..", "|..", "|..", "|..", "|..", "|..", "|..", "\\==", "   "
+            ]);
+
+        if (!aspect[2])
+            render(2, 5, [
+                "     ", "\\    ", "|    ", "|===\\", "|...|", "|...|", "|...|", "|...|", "|...|", "|...|", "|===/", "|    ", "/    ", "     "
+            ]);
+
+        if (!aspect[4])
+            render(20, 5, [
+                "     ", "    /", "    |", "/===|", "|...|", "|...|", "|...|", "|...|", "|...|", "|...|", "\\===|", "    |", "    \\", "     "
+            ]);
+
+        if (aspect[3]) {
+            render(2, 23, [
+                "                       ",
+                "=======================",
+                ".......................",
+                ".......................",
+                ".......................",
+                ".......................",
+                ".......................",
+                ".......................",
+                ".......................",
+                ".......................",
+                ".......................",
+                ".......................",
+                "=======================",
+                "                       "
+            ]);
+        } else {
+            if (!aspect[5])
+                render(6, 3, [
+                    "   ", "   ", "   ", "\\  ", "|=\\", "|.|", "|.|", "|.|", "|.|", "|=/", "/  ", "   ", "   ", "   "
+                ]);
+
+            if (!aspect[7])
+                render(18, 3, [
+                    "   ", "   ", "   ", "  /", "/=|", "|.|", "|.|", "|.|", "|.|", "\\=|", "  \\", "   ", "   ", "   "
+                ]);
+
+            if (aspect[6]) {
+                if (atexit) {
+                    render(6, 15, [
+                        "               ", "               ", "               ",
+                        "===============", ".             .", ". *********** .",
+                        ". THE WAY OUT .", ". *********** .", ".             .",
+                        ".             .", "===============", "               ",
+                        "               ", "               "
+                    ]);
+                } else {
+                    render(6, 15, [
+                        "               ", "               ", "               ",
+                        "===============", "...............", "...............",
+                        "...............", "...............", "...............",
+                        "...............", "===============", "               ",
+                        "               ", "               "
+                    ]);
+                }
+            } else {
+                if (!aspect[8])
+                    render(8, 3, [
+                        "   ", "   ", "   ", "   ", "\\  ", "|=\\", "|.|", "|.|", "|=/", "/  ", "   ", "   ", "   ", "   "
+                    ]);
+
+                if (!aspect[10])
+                    render(16, 3, [
+                        "   ", "   ", "   ", "   ", "  /", "/=|", "|.|", "|.|", "\\=|", "  \\", "   ", "   ", "   ", "   "
+                    ]);
+
+                if (aspect[9]) {
+                    render(8, 11, [
+                        "           ", "           ", "           ", "           ",
+                        "===========", "...........", "...........", "...........",
+                        "...........", "===========", "           ", "           ",
+                        "           ", "           "
+                    ]);
+                } else {
+                    if (aspect[11]) {
+                        render(10, 7, [
+                            "       ", "       ", "       ", "       ", "       ",
+                            "=======", ".......", ".......", "=======", "       ",
+                            "       ", "       ", "       ", "       "
+                        ]);
+                    }
+                }
+            }
+        }
+
+        // Write viewport
+        const s = view.map(line => "  " + line + "  ").join("\n");
+        viewportEl.textContent = s; // <pre> preserves spacing
+
+        // Hint
+        const dist = Math.floor(Math.hypot(xpos - exitx, ypos - exity));
+        let direction = ", exit lies " + dist + " steps to ";
+        if (xpos > exitx) direction += "north";
+        else if (xpos < exitx) direction += "south";
+        if (ypos > exity) direction += "west";
+        else if (ypos < exity) direction += "east";
+
+        const facing = ["north", "east", "south", "west"][dir];
+        readoutEl.textContent = "Facing " + facing + direction;
+    }
+
+    function turn(delta) {
+        dir = (dir + delta + 4) % 4;
+        draw();
+    }
+
+    function moveForward() {
+        if (!aspect[3]) {
+            switch (dir) {
+                case 0: xpos--; break;
+                case 1: ypos++; break;
+                case 2: xpos++; break;
+                case 3: ypos--; break;
+            }
+            steps++;
+            draw();
+            testForEnding();
+        }
+    }
+
+    function moveBack() {
+        // glance behind to see if we'll back into a wall; hokey, but it's unnoticeable
+        turn(-1);
+        turn(-1);
+        let wallBehind = aspect[3];
+        turn(1);
+        turn(1);
+
+        if (!wallBehind) {
+            switch (dir) {
+                case 0: xpos++; break;
+                case 1: ypos--; break;
+                case 2: xpos--; break;
+                case 3: ypos++; break;
+            }
+            steps++;
+            draw();
+            testForEnding();
+        }
+    }
+
+    function testForEnding() {
+        steps++;
+        draw();
+
+        if (xpos === exitx && ypos === exity) {
+            alert(
+                "Well done! you reached the exit in " + steps + " steps,\n" +
+                "and you looked at the map " + cheats + " times.\n" +
+                "Press OK to see if you can do any better."
+            );
+            start();
+        }
+    }
+
+    function cheat() {
+        if (mapon) {
+            draw();
+            return;
+        }
+
+        let s = "";
+        for (let x = xpos - 10; x < xpos + 10; ++x) {
+            for (let y = ypos - 10; y < ypos + 10; ++y) {
+                if (getGrid(x, y)) {
+                    s += "X";
+                } else if (x === xpos && y === ypos) {
+                    // Use arrows for facing direction
+                    s += ["↑", "→", "↓", "←"][dir];
+                } else if (x === exitx && y === exity) {
+                    s += "θ";
+                } else {
+                    s += " ";
+                }
+            }
+            s += "\n";
+        }
+
+        viewportEl.textContent = s;
+        mapon = true;
+        cheats++;
+    }
+
+    function start() {
+        xpos = 1;
+        ypos = 1;
+        dir = 2;
+        steps = 0;
+        cheats = 0;
+        mapon = false;
+        setTimeout(draw, 100);
+    }
+
+    // === Init & controls ===
+    window.addEventListener("DOMContentLoaded", () => {
+        viewportEl = document.getElementById("viewport");
+        readoutEl = document.getElementById("readout");
+
+        // Keyboard controls: left/right arrows to turn, up/down arrows to move, space to cheat
+        viewportEl.addEventListener("keydown", (e) => {
+            switch (e.key) {
+                case "ArrowLeft":
+                case "a":
+                    turn(-1);
+                    break;
+                case "ArrowRight":
+                case "d":
+                    turn(1);
+                    break;
+                case "ArrowUp":
+                case "w":
+                    moveForward();
+                    break;
+                case "ArrowDown":
+                case "s":
+                    moveBack();
+                    break;
+                case "c":
+                    cheat();
+                    break;
+                case "r":
+                    start();
+                    break;
+            }
+        });
+
+        viewportEl.addEventListener("keydown", function (e) {
+            if (["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].indexOf(e.code) > -1) {
+                e.preventDefault();
+            }
+        });
+
+        start();
+    });
+</script>
