@@ -1,0 +1,179 @@
+<html>
+
+<head>
+  <style type="text/css">
+    #concroot {
+      text-align: center;
+    }
+
+    #board {
+      display: grid;
+      grid-template-columns: repeat(6, 40px);
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .card {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      margin: revert;
+    }
+
+    #timer {
+      margin: 1rem;
+      font-size: 1.2rem;
+    }
+
+    #concroot button {
+      all: revert;
+      margin-bottom: 20px;
+      margin-top: 20px;
+    }
+  </style>
+
+  <script type="text/javascript">
+    const PAIRS = 18;
+    const CARD_COUNT = PAIRS * 2;
+
+    class ConcentrationGame {
+      constructor() {
+        this.map = [];
+        this.matched = [];
+        this.firstCard = null;
+        this.lockBoard = false;
+        this.matches = 0;
+        this.seconds = 0;
+        this.timerId;
+        this.isGameBegun = false;
+        this.boardMsgEl = document.getElementById("boardmsg");
+        this.timerEl = document.getElementById("conctimer");
+      }
+
+      createDeck() {
+        this.map = [];
+
+        for (let i = 1; i <= PAIRS; i++) {
+          this.map.push(i, i);
+        }
+
+        for (let i = this.map.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [this.map[i], this.map[j]] = [this.map[j], this.map[i]];
+        }
+
+        this.matched = Array(CARD_COUNT).fill(false);
+      }
+
+      startTimer() {
+        this.boardMsgEl.textContent = "";
+        clearInterval(this.timerId);
+
+        this.seconds = 0;
+
+        this.timerId = setInterval(() => {
+          this.seconds++;
+
+          const min = Math.floor(this.seconds / 60);
+          const sec = String(this.seconds % 60).padStart(2, "0");
+
+          this.timerEl.innerText = `${min}:${sec}`;
+        }, 1000);
+      }
+
+      createBoard() {
+        const board = document.getElementById("board");
+        board.innerHTML = "";
+
+        this.map.forEach((value, index) => {
+          const img = document.createElement("img");
+
+          img.src = "conc0.gif";
+          img.className = "card";
+
+          img.addEventListener("click", () => this.revealCard(index, img));
+
+          board.appendChild(img);
+        });
+      }
+
+      revealCard(index, img) {
+        if (!this.isGameBegun) {
+          this.isGameBegun = true;
+          this.startTimer();
+        }
+
+        if (this.lockBoard || this.matched[index]) return;
+
+        img.src = `conc${this.map[index]}.gif`;
+
+        if (!this.firstCard) {
+          this.firstCard = { index, img };
+          return;
+        }
+
+        this.lockBoard = true;
+
+        setTimeout(() => {
+          const sameCard = this.firstCard.index === index;
+          const match = this.map[this.firstCard.index] === this.map[index];
+
+          if (!sameCard && match) {
+            this.matched[this.firstCard.index] = true;
+            this.matched[index] = true;
+
+            this.matches++;
+
+            if (this.matches === PAIRS) {
+              clearInterval(this.timerId);
+              this.boardMsgEl.textContent = `You did it in ${this.timerEl.innerText}!`;
+              this.init();
+              return;
+            }
+          } else {
+            if (!this.matched[this.firstCard.index]) {
+              this.firstCard.img.src = "conc0.gif";
+            }
+
+            img.src = "conc0.gif";
+          }
+
+          this.firstCard = null;
+          this.lockBoard = false;
+
+        }, 600);
+      }
+
+      init() {
+        this.matches = 0;
+        this.firstCard = null;
+        this.lockBoard = false;
+        this.isGameBegun = false;
+
+        this.createDeck();
+        this.createBoard();
+
+        this.timerEl.innerText = "0:00";
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const conc = new ConcentrationGame();
+      conc.init();
+
+      let timerEl = document.getElementById("conctimer");
+      timerEl.addEventListener("click", () => { conc.init(); conc.startTimer(); });
+    });
+
+  </script>
+</head>
+
+<body>
+  <div id="concroot">
+    <div id="board"></div>
+    <button type="button" value="" id="conctimer">START</button>
+    <div id="boardmsg"></div>
+  </div>
+</body>
+
+</html>

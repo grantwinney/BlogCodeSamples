@@ -1,0 +1,293 @@
+<canvas id="game" width="440" height="320" style="border:1px solid #000"></canvas>
+
+<script type="text/javascript">
+  // =========================
+  // Canvas Setup
+  // =========================
+  const canvas = document.getElementById("game");
+  const ctx = canvas.getContext("2d");
+
+  canvas.width = 440;
+  canvas.height = 320;
+
+  // =========================
+  // Game State
+  // =========================
+  let interval = 10; // speed control
+  let timeCounter = 0;
+
+  let gameRunning = false;
+  let gameLoaded = false;
+  let missed = false;
+
+  let ballCount = 3;
+  let clearedBlocks = 0;
+
+  let ballX = 209;
+  let ballY = 270;
+  let ballDX = -8;
+  let ballDY = -8;
+
+  let paddleX = 193;
+
+  const blockColors = ["#FFFF00", "#FFCF00", "#FF7F00", "#FF3F00", "#FF0000"];
+  const blockStatus = Array(40).fill(0);
+
+  // Block geometry
+  const blockW = 42;
+  const blockH = 16;
+  const blockStartX = 29;
+  const blockStartY = 48;
+  const blockGapX = 46;
+  const blockGapY = 20;
+
+  // =========================
+  // Input
+  // =========================
+  canvas.addEventListener("mousemove", (e) => {
+      if (!gameLoaded) return;
+
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+
+      paddleX = x - 20;
+      if (paddleX < 16) paddleX = 16;
+      if (paddleX > 370) paddleX = 370;
+  });
+
+  // =========================
+  // Game Init
+  // =========================
+  function initGame() {
+      clearedBlocks = 0;
+      timeCounter = 0;
+      ballCount = 3;
+
+      for (let i = 0; i < 40; i++) {
+          blockStatus[i] = Math.floor(i / 8);
+      }
+
+      ballX = 209;
+      ballY = 270;
+      ballDX = -8;
+      ballDY = -8;
+      paddleX = 193;
+
+      missed = false;
+      gameLoaded = true;
+      gameRunning = true;
+
+      requestAnimationFrame(gameLoop);
+  }
+
+  // =========================
+  // Physics + Collision
+  // =========================
+  function update() {
+      timeCounter++;
+
+      ballX += ballDX;
+      ballY += ballDY;
+
+      // Walls
+      if (ballX < 16) {
+          ballX = 32 - ballX;
+          ballDX = -ballDX;
+      }
+      if (ballX > 401) {
+          ballX = 802 - ballX;
+          ballDX = -ballDX;
+      }
+      if (ballY < 16) {
+          ballY = 32 - ballY;
+          ballDY = -ballDY;
+      }
+
+      // Bottom / paddle
+      if (ballY >= 272) {
+          if (!missed) {
+              const predictedX = (ballDX / ballDY) * (272 - ballY) + ballX;
+
+              if (predictedX >= paddleX - 12 && predictedX <= paddleX + 42) {
+                  ballY = 272;
+                  ballDY = -ballDY;
+                  ballX = predictedX;
+
+                  const offset = predictedX - paddleX;
+
+                  ballDX = 8 * Math.sign(ballDX);
+
+                  if (offset < -4) ballDX = -15;
+                  if (offset > 36) ballDX = 15;
+
+                  if (offset >= 14 && offset <= 16) ballDX = -2;
+                  if (offset >= 17 && offset <= 20) ballDX = 2;
+
+                  if (offset >= 0 && offset <= 4) ballDX = -4;
+                  if (offset >= 28 && offset <= 32) ballDX = 4;
+
+                  if (offset >= -4 && offset <= -1) ballDX = -11;
+                  if (offset >= 33 && offset <= 36) ballDX = 11;
+
+              } else if (ballDY > 0) {
+                  missed = true;
+              }
+          } else {
+              if (ballY > 290) {
+                  missed = false;
+                  ballCount--;
+                  if (ballCount <= 0) gameOver();
+                  else resetBall();
+              }
+          }
+      }
+
+      checkBlockCollision();
+  }
+
+  function resetBall() {
+      ballX = 209;
+      ballY = 270;
+      ballDX = -8;
+      ballDY = -8;
+  }
+
+  function checkBlockCollision() {
+      const tmpX = ballX + 4;
+      const tmpY = ballY + 4;
+
+      if (tmpY < blockStartY || tmpY > blockStartY + 5 * blockGapY) return;
+      if (tmpX < blockStartX || tmpX > blockStartX + 8 * blockGapX) return;
+
+      const col = Math.floor((tmpX - blockStartX) / blockGapX);
+      const row = Math.floor((tmpY - blockStartY) / blockGapY);
+      const idx = row * 8 + col;
+
+      if (blockStatus[idx] > 4) return;
+
+      blockStatus[idx]++;
+      if (blockStatus[idx] === 5) clearedBlocks++;
+
+      if (clearedBlocks >= 40) gameClear();
+
+      // Collision side logic preserved exactly
+      const leftX = blockStartX + blockGapX * col;
+      const rightX = leftX + blockW;
+      const topY = blockStartY + blockGapY * row;
+      const bottomY = topY + blockH;
+
+      const iy = (ballDY / ballDX) * (leftX - tmpX) + tmpY;
+
+      if (ballDX > 0) {
+          if (iy > bottomY) {
+              ballY = bottomY - 4;
+              ballX = (ballDX / ballDY) * (bottomY - tmpY) + tmpX - 4;
+              ballDY = -ballDY;
+          } else if (iy < topY) {
+              ballY = topY - 4;
+              ballX = (ballDX / ballDY) * (topY - tmpY) + tmpX - 4;
+              ballDY = -ballDY;
+          } else {
+              ballX = leftX - 4;
+              ballY = (ballDY / ballDX) * (leftX - tmpX) + tmpY - 4;
+              ballDX = -ballDX;
+          }
+      } else {
+          const iy2 = (ballDY / ballDX) * (rightX - tmpX) + tmpY;
+
+          if (iy2 > bottomY) {
+              ballY = bottomY - 4;
+              ballX = (ballDX / ballDY) * (bottomY - tmpY) + tmpX - 4;
+              ballDY = -ballDY;
+          } else if (iy2 < topY) {
+              ballY = topY - 4;
+              ballX = (ballDX / ballDY) * (topY - tmpY) + tmpX - 4;
+              ballDY = -ballDY;
+          } else {
+              ballX = rightX - 4;
+              ballY = (ballDY / ballDX) * (rightX - tmpX) + tmpY - 4;
+              ballDX = -ballDX;
+          }
+      }
+  }
+
+  // =========================
+  // Rendering
+  // =========================
+  function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Blocks
+      for (let i = 0; i < 40; i++) {
+          const row = Math.floor(i / 8);
+          const col = i % 8;
+
+          const status = blockStatus[i];
+          if (status > 4) continue;
+
+          ctx.fillStyle = blockColors[status];
+          ctx.fillRect(
+              blockStartX + col * blockGapX,
+              blockStartY + row * blockGapY,
+              blockW,
+              blockH
+          );
+      }
+
+      // Ball
+      ctx.fillStyle = "#FFFFFF";
+      ctx.fillRect(ballX, ballY, 8, 8);
+
+      // Paddle
+      ctx.fillStyle = "#B0B0FF";
+      ctx.fillRect(paddleX, 280, 40, 4);
+
+      // UI
+      ctx.fillStyle = "#000044";
+      ctx.font = "16px sans-serif";
+      ctx.fillText(`Balls: ${ballCount}`, 10, 20);
+      ctx.fillText(`Time: ${Math.floor(timeCounter / 10)}`, 10, 40);
+
+      if (!gameRunning) {
+          ctx.fillStyle = "#CC4444";
+          ctx.font = "24px sans-serif";
+          ctx.fillText("CLICK TO START", 140, 160);
+      }
+  }
+
+  // =========================
+  // Game Loop
+  // =========================
+  function gameLoop() {
+      if (gameRunning) {
+          update();
+          render();
+          requestAnimationFrame(gameLoop);
+      } else {
+          render();
+      }
+  }
+
+  // =========================
+  // Game End States
+  // =========================
+  function gameOver() {
+      gameRunning = false;
+  }
+
+  function gameClear() {
+      gameRunning = false;
+  }
+
+  // =========================
+  // Start on click
+  // =========================
+  canvas.addEventListener("click", () => {
+      if (!gameRunning) initGame();
+  });
+
+  // Initial render
+  window.addEventListener("DOMContentLoaded", () => {
+      render();
+  });
+</script>

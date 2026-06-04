@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Battleship (Modern JS)</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #0b1724;
+      color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .game {
+      text-align: center;
+    }
+
+    .boards {
+      display: flex;
+      gap: 40px;
+      margin-top: 10px;
+    }
+
+    .board {
+      display: inline-block;
+    }
+
+    .heading {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(16, 16px);
+      grid-auto-rows: 16px;
+      gap: 0;
+      background: #001020;
+      padding: 4px;
+      border-radius: 4px;
+    }
+
+    .cell {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    .cell.player {
+      cursor: default;
+    }
+
+    #status {
+      margin-top: 12px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="game">
+    <h1>Battleship</h1>
+    <div class="boards">
+      <div class="board">
+        <div class="heading">COMPUTER'S FLEET</div>
+        <div id="computer-grid" class="grid"></div>
+      </div>
+      <div class="board">
+        <div class="heading">PLAYER'S FLEET</div>
+        <div id="player-grid" class="grid"></div>
+      </div>
+    </div>
+    <div id="status"></div>
+  </div>
+
+  <script type="module">
+    const GRID_SIZE = 16;
+
+    // Tile IDs (same semantics as original)
+    const TILE_EMPTY = 100;
+    const TILE_MISS = 102;
+    const TILE_HIT = 103;
+
+    // Ship drawing info (same as original)
+    const SHIP = [
+      [ // horizontal
+        [1, 5], [1, 2, 5], [1, 2, 3, 5], [1, 2, 3, 4, 5]
+      ],
+      [ // vertical
+        [6, 10], [6, 7, 10], [6, 7, 8, 10], [6, 7, 8, 9, 10]
+      ]
+    ];
+
+    const DEAD = [
+      [ // horizontal sunk
+        [201, 203], [201, 202, 203], [201, 202, 202, 203], [201, 202, 202, 202, 203]
+      ],
+      [ // vertical sunk
+        [204, 206], [204, 205, 206], [204, 205, 205, 206], [204, 205, 205, 205, 206]
+      ]
+    ];
+
+    // [name, length, count]
+    const SHIP_TYPES = [
+      ["Minesweeper", 2, 4],
+      ["Frigate", 3, 4],
+      ["Cruiser", 4, 2],
+      ["Battleship", 5, 1]
+    ];
+
+    class BattleshipGame {
+      constructor() {
+        this.playerGrid = [];
+        this.computerGrid = [];
+        this.playerShips = [];
+        this.computerShips = [];
+        this.playerLives = 0;
+        this.computerLives = 0;
+        this.playing = true;
+        this.statusMsg = "";
+
+        this.computerGridEl = document.getElementById("computer-grid");
+        this.playerGridEl = document.getElementById("player-grid");
+        this.statusEl = document.getElementById("status");
+
+        this.preloaded = [];
+        this.init();
+      }
+
+      async init() {
+        await this.preloadImages();
+        this.playerGrid = this.setupPlayer(false);
+        this.computerGrid = this.setupPlayer(true);
+        this.buildGrids();
+        this.updateStatus();
+      }
+
+      preloadImages() {
+        const ids = [
+          1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+          100, 101, 102, 103,
+          201, 202, 203, 204, 205, 206
+        ];
+        const promises = ids.map(id => {
+          const src = `batt${id}.gif`;
+          return new Promise(resolve => {
+            const img = new Image();
+            img.onload = () => resolve();
+            img.onerror = () => resolve();
+            img.src = src;
+            this.preloaded.push(img);
+          });
+        });
+        return Promise.all(promises);
+      }
+
+      createEmptyGrid() {
+        const grid = [];
+        for (let y = 0; y < GRID_SIZE; y++) {
+          const row = [];
+          for (let x = 0; x < GRID_SIZE; x++) {
+            // [tileId, shipIndex, deadTileId]
+            row.push([TILE_EMPTY, -1, 0]);
+          }
+          grid.push(row);
+        }
+        return grid;
+      }
+
+      setupPlayer(isComputer) {
+        const grid = this.createEmptyGrid();
+        let shipNo = 0;
+
+        for (let s = SHIP_TYPES.length - 1; s >= 0; s--) {
+          const [name, length, count] = SHIP_TYPES[s];
+          for (let i = 0; i < count; i++) {
+            const dir = Math.floor(Math.random() * 2); // 0 horizontal, 1 vertical
+            let lx = GRID_SIZE;
+            let ly = GRID_SIZE;
+            let dx = 0;
+            let dy = 0;
+
+            if (dir === 0) {
+              lx = GRID_SIZE - length;
+              dx = 1;
+            } else {
+              ly = GRID_SIZE - length;
+              dy = 1;
+            }
+
+            let x, y, ok;
+            do {
+              y = Math.floor(Math.random() * ly);
+              x = Math.floor(Math.random() * lx);
+              ok = true;
+              let cx = x;
+              let cy = y;
+              for (let j = 0; j < length; j++) {
+                if (grid[cy][cx][0] < 100) {
+                  ok = false;
+                  break;
+                }
+                cx += dx;
+                cy += dy;
+              }
+            } while (!ok);
+
+            let cx = x;
+            let cy = y;
+            for (let j = 0; j < length; j++) {
+              grid[cy][cx][0] = SHIP[dir][s][j];
+              grid[cy][cx][1] = shipNo;
+              grid[cy][cx][2] = DEAD[dir][s][j];
+              cx += dx;
+              cy += dy;
+            }
+
+            if (isComputer) {
+              this.computerShips[shipNo] = [s, length];
+              this.computerLives++;
+            } else {
+              this.playerShips[shipNo] = [s, length];
+              this.playerLives++;
+            }
+            shipNo++;
+          }
+        }
+        return grid;
+      }
+
+      buildGrids() {
+        this.computerGridEl.innerHTML = "";
+        this.playerGridEl.innerHTML = "";
+
+        for (let y = 0; y < GRID_SIZE; y++) {
+          for (let x = 0; x < GRID_SIZE; x++) {
+            // Computer cell (clickable)
+            const cCell = document.createElement("img");
+            cCell.className = "cell";
+            cCell.dataset.y = y;
+            cCell.dataset.x = x;
+            cCell.src = `batt${TILE_EMPTY}.gif`;
+            cCell.addEventListener("click", () => this.onComputerCellClick(y, x));
+            this.computerGridEl.appendChild(cCell);
+
+            // Player cell (shows ships)
+            const pCell = document.createElement("img");
+            pCell.className = "cell player";
+            pCell.dataset.y = y;
+            pCell.dataset.x = x;
+            pCell.src = `batt${this.playerGrid[y][x][0]}.gif`;
+            this.playerGridEl.appendChild(pCell);
+          }
+        }
+      }
+
+      setImage(grid, y, x, id, isComputer) {
+        grid[y][x][0] = id;
+        const selector = isComputer ? "#computer-grid" : "#player-grid";
+        const gridEl = isComputer ? this.computerGridEl : this.playerGridEl;
+        const index = y * GRID_SIZE + x;
+        const img = gridEl.children[index];
+        img.src = `batt${id}.gif`;
+      }
+
+      onComputerCellClick(y, x) {
+        if (!this.playing) return;
+
+        const cell = this.computerGrid[y][x][0];
+
+        if (cell < 100) {
+          // hit
+          this.setImage(this.computerGrid, y, x, TILE_HIT, true);
+          const shipNo = this.computerGrid[y][x][1];
+          if (--this.computerShips[shipNo][1] === 0) {
+            this.sinkShip(this.computerGrid, shipNo, true);
+            alert(`You sank my ${SHIP_TYPES[this.computerShips[shipNo][0]][0]}!`);
+            this.updateStatus();
+            if (--this.computerLives === 0) {
+              alert("You win! Refresh the page to play again.");
+              this.playing = false;
+              return;
+            }
+          }
+          if (this.playing) this.computerMove();
+        } else if (cell === TILE_EMPTY) {
+          // miss
+          this.setImage(this.computerGrid, y, x, TILE_MISS, true);
+          this.computerMove();
+        }
+      }
+
+      computerMove() {
+        let sx, sy;
+        let selected = false;
+
+        // shoot-to-kill mode: two passes
+        for (let pass = 0; pass < 2 && !selected; pass++) {
+          for (let y = 0; y < GRID_SIZE && !selected; y++) {
+            for (let x = 0; x < GRID_SIZE && !selected; x++) {
+              if (this.playerGrid[y][x][0] === TILE_HIT) {
+                sx = x;
+                sy = y;
+
+                const nup = (y > 0 && this.playerGrid[y - 1][x][0] <= 100);
+                const ndn = (y < GRID_SIZE - 1 && this.playerGrid[y + 1][x][0] <= 100);
+                const nlt = (x > 0 && this.playerGrid[y][x - 1][0] <= 100);
+                const nrt = (x < GRID_SIZE - 1 && this.playerGrid[y][x + 1][0] <= 100);
+
+                if (pass === 0) {
+                  const yup = (y > 0 && this.playerGrid[y - 1][x][0] === TILE_HIT);
+                  const ydn = (y < GRID_SIZE - 1 && this.playerGrid[y + 1][x][0] === TILE_HIT);
+                  const ylt = (x > 0 && this.playerGrid[y][x - 1][0] === TILE_HIT);
+                  const yrt = (x < GRID_SIZE - 1 && this.playerGrid[y][x + 1][0] === TILE_HIT);
+
+                  if (nlt && yrt) { sx = x - 1; selected = true; }
+                  else if (nrt && ylt) { sx = x + 1; selected = true; }
+                  else if (nup && ydn) { sy = y - 1; selected = true; }
+                  else if (ndn && yup) { sy = y + 1; selected = true; }
+                } else {
+                  if (nlt) { sx = x - 1; selected = true; }
+                  else if (nrt) { sx = x + 1; selected = true; }
+                  else if (nup) { sy = y - 1; selected = true; }
+                  else if (ndn) { sy = y + 1; selected = true; }
+                }
+              }
+            }
+          }
+        }
+
+        // random potshot if nothing selected
+        if (!selected) {
+          do {
+            sy = Math.floor(Math.random() * GRID_SIZE);
+            sx = Math.floor(Math.random() * (GRID_SIZE / 2)) * 2 + (sy % 2);
+          } while (this.playerGrid[sy][sx][0] > 100);
+        }
+
+        const cell = this.playerGrid[sy][sx][0];
+        if (cell < 100) {
+          // hit
+          this.setImage(this.playerGrid, sy, sx, TILE_HIT, false);
+          const shipNo = this.playerGrid[sy][sx][1];
+          if (--this.playerShips[shipNo][1] === 0) {
+            this.sinkShip(this.playerGrid, shipNo, false);
+            alert(`I sank your ${SHIP_TYPES[this.playerShips[shipNo][0]][0]}!`);
+            if (--this.playerLives === 0) {
+              this.knowYourEnemy();
+              alert("I win! Refresh the page to play again.");
+              this.playing = false;
+            }
+          }
+        } else {
+          // miss
+          this.setImage(this.playerGrid, sy, sx, TILE_MISS, false);
+        }
+      }
+
+      sinkShip(grid, shipNo, isComputer) {
+        for (let y = 0; y < GRID_SIZE; y++) {
+          for (let x = 0; x < GRID_SIZE; x++) {
+            if (grid[y][x][1] === shipNo) {
+              const deadId = grid[y][x][2];
+              this.setImage(grid, y, x, deadId, isComputer);
+            }
+          }
+        }
+      }
+
+      knowYourEnemy() {
+        for (let y = 0; y < GRID_SIZE; y++) {
+          for (let x = 0; x < GRID_SIZE; x++) {
+            const cell = this.computerGrid[y][x][0];
+            if (cell === TILE_HIT) {
+              this.setImage(this.computerGrid, y, x, this.computerGrid[y][x][2], true);
+            } else if (cell < 100) {
+              this.setImage(this.computerGrid, y, x, cell, true);
+            }
+          }
+        }
+      }
+
+      updateStatus() {
+        let s = "Computer has ";
+        let first = true;
+        for (let i = 0; i < this.computerShips.length; i++) {
+          if (this.computerShips[i][1] > 0) {
+            if (!first) s += ", ";
+            first = false;
+            s += SHIP_TYPES[this.computerShips[i][0]][0];
+          }
+        }
+        if (first) s += "nothing left, thanks to you!";
+        this.statusMsg = s;
+        this.statusEl.textContent = s;
+      }
+    }
+
+    new BattleshipGame();
+  </script>
+</body>
+
+</html>

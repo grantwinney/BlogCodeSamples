@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Concentration</title>
+
+<style>
+body {
+    font-family: system-ui, sans-serif;
+    text-align: center;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(6, 80px);
+    gap: 8px;
+    justify-content: center;
+}
+
+.card {
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+}
+
+#timer {
+    margin: 1rem;
+    font-size: 1.2rem;
+}
+</style>
+</head>
+<body>
+
+<h2>Concentration</h2>
+
+<div id="timer">0:00</div>
+<div id="board"></div>
+
+<script>
+const PAIRS = 18;
+const CARD_COUNT = PAIRS * 2;
+
+let map = [];
+let matched = [];
+let firstCard = null;
+let lockBoard = false;
+let matches = 0;
+
+let seconds = 0;
+let timerId;
+
+function createDeck() {
+    map = [];
+
+    for (let i = 1; i <= PAIRS; i++) {
+        map.push(i, i);
+    }
+
+    for (let i = map.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [map[i], map[j]] = [map[j], map[i]];
+    }
+
+    matched = Array(CARD_COUNT).fill(false);
+}
+
+function startTimer() {
+    clearInterval(timerId);
+
+    seconds = 0;
+
+    timerId = setInterval(() => {
+        seconds++;
+
+        const min = Math.floor(seconds / 60);
+        const sec = String(seconds % 60).padStart(2, "0");
+
+        document.getElementById("timer").textContent =
+            `${min}:${sec}`;
+    }, 1000);
+}
+
+function createBoard() {
+    const board = document.getElementById("board");
+    board.innerHTML = "";
+
+    map.forEach((value, index) => {
+        const img = document.createElement("img");
+
+        img.src = "conc0.gif";
+        img.className = "card";
+
+        img.addEventListener("click", () => revealCard(index, img));
+
+        board.appendChild(img);
+    });
+}
+
+function revealCard(index, img) {
+    if (lockBoard || matched[index]) return;
+
+    img.src = `conc${map[index]}.gif`;
+
+    if (!firstCard) {
+        firstCard = { index, img };
+        return;
+    }
+
+    lockBoard = true;
+
+    setTimeout(() => {
+        const sameCard = firstCard.index === index;
+        const match = map[firstCard.index] === map[index];
+
+        if (!sameCard && match) {
+            matched[firstCard.index] = true;
+            matched[index] = true;
+
+            matches++;
+
+            if (matches === PAIRS) {
+                clearInterval(timerId);
+                alert(`You did it in ${document.getElementById("timer").textContent}!`);
+                init();
+                return;
+            }
+        } else {
+            if (!matched[firstCard.index]) {
+                firstCard.img.src = "conc0.gif";
+            }
+
+            img.src = "conc0.gif";
+        }
+
+        firstCard = null;
+        lockBoard = false;
+
+    }, 600);
+}
+
+function init() {
+    matches = 0;
+    firstCard = null;
+    lockBoard = false;
+
+    createDeck();
+    createBoard();
+    startTimer();
+}
+
+init();
+</script>
+
+</body>
+</html>

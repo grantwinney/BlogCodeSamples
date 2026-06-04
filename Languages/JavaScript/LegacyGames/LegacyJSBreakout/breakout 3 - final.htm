@@ -1,0 +1,291 @@
+<html>
+
+<head>
+  <script type="text/javascript">
+    const BLOCK_COLORS = ["#FFFF00", "#FFCF00", "#FF7F00", "#FF3F00", "#FF0000"];
+    const BLOCK_STATUS = Array(40).fill(0);
+
+    // Gameplay
+    const BALL_COUNT = 3;
+
+    // Block geometry
+    const BLOCK_W = 42;
+    const BLOCK_H = 16;
+    const BLOCK_START_X = 35;
+    const BLOCK_START_Y = 60;
+    const BLOCK_GAP_X = 46;
+    const BLOCK_GAP_Y = 20;
+
+    class BreakoutGame {
+      constructor() {
+        this.canvas = document.getElementById("breakoutgame");
+        this.ctx = this.canvas.getContext("2d");
+
+        this.canvas.width = 430;
+        this.canvas.height = 320;
+
+        this.gameRunning = false;
+        this.gameLoaded = false;
+
+        this.ballCount = BALL_COUNT;
+        this.startTime = Date.now();
+
+        this.ballX = 0;
+        this.ballY = 0;
+        this.ballDX = 0;
+        this.ballDY = 0;
+
+        this.paddleX = 193;
+
+        this.gameLoop = this.gameLoop.bind(this);
+      }
+
+      initGame() {
+        this.clearedBlocks = 0;
+        this.ballCount = BALL_COUNT;
+        this.startTime = Date.now();
+
+        for (let i = 0; i < 40; i++) {
+          BLOCK_STATUS[i] = Math.floor(i / 8);
+        }
+
+        this.resetBall();
+        this.paddleX = 193;
+
+        this.gameLoaded = true;
+        this.gameRunning = true;
+
+        requestAnimationFrame(this.gameLoop);
+      }
+
+      resetBall() {
+        this.ballX = 209;
+        this.ballY = 270;
+        this.ballDX = -3;
+        this.ballDY = -3;
+      }
+
+      // =========================
+      // Corrected Collision System
+      // =========================
+
+      checkWallCollision() {
+        // Left
+        if (this.ballX <= 0) {
+          this.ballX = 0;
+          this.ballDX *= -1;
+        }
+
+        // Right
+        if (this.ballX + 8 >= this.canvas.width) {
+          this.ballX = this.canvas.width - 8;
+          this.ballDX *= -1;
+        }
+
+        // Top
+        if (this.ballY <= 0) {
+          this.ballY = 0;
+          this.ballDY *= -1;
+        }
+      }
+
+      checkPaddleCollision() {
+        const ballBottom = this.ballY + 8;
+
+        if (this.ballDY > 0 && ballBottom >= 280 && ballBottom <= 284) {
+          if (this.ballX + 8 >= this.paddleX && this.ballX <= this.paddleX + 40) {
+
+            this.ballY = 280 - 8;
+            this.ballDY *= -1;
+
+            const hitPos = (this.ballX + 4) - (this.paddleX + 20);
+            this.ballDX = hitPos * 0.25;
+          }
+        }
+      }
+
+      checkBlockCollision() {
+        const ballLeft = this.ballX;
+        const ballRight = this.ballX + 8;
+        const ballTop = this.ballY;
+        const ballBottom = this.ballY + 8;
+
+        for (let i = 0; i < 40; i++) {
+          if (BLOCK_STATUS[i] > 4) continue;
+
+          const row = Math.floor(i / 8);
+          const col = i % 8;
+
+          const bx = BLOCK_START_X + col * BLOCK_GAP_X;
+          const by = BLOCK_START_Y + row * BLOCK_GAP_Y;
+
+          const blockLeft = bx;
+          const blockRight = bx + BLOCK_W;
+          const blockTop = by;
+          const blockBottom = by + BLOCK_H;
+
+          // AABB intersection
+          if (
+            ballRight > blockLeft &&
+            ballLeft < blockRight &&
+            ballBottom > blockTop &&
+            ballTop < blockBottom
+          ) {
+            BLOCK_STATUS[i]++;
+            if (BLOCK_STATUS[i] === 5) this.clearedBlocks++;
+
+            if (this.clearedBlocks >= 40) this.gameClear();
+
+            const overlapLeft = ballRight - blockLeft;
+            const overlapRight = blockRight - ballLeft;
+            const overlapTop = ballBottom - blockTop;
+            const overlapBottom = blockBottom - ballTop;
+
+            const minOverlap = Math.min(overlapLeft, overlapRight, overlapTop, overlapBottom);
+
+            if (minOverlap === overlapLeft) {
+              this.ballX -= overlapLeft;
+              this.ballDX *= -1;
+            } else if (minOverlap === overlapRight) {
+              this.ballX += overlapRight;
+              this.ballDX *= -1;
+            } else if (minOverlap === overlapTop) {
+              this.ballY -= overlapTop;
+              this.ballDY *= -1;
+            } else {
+              this.ballY += overlapBottom;
+              this.ballDY *= -1;
+            }
+
+            return; // Only one block per frame
+          }
+        }
+      }
+
+      // =========================
+      // Update Loop
+      // =========================
+      update() {
+        // movement stays the same
+        this.ballX += this.ballDX;
+        this.ballY += this.ballDY;
+
+        this.checkWallCollision();
+        this.checkPaddleCollision();
+        this.checkBlockCollision();
+
+        if (this.ballY > this.canvas.height) {
+          this.ballCount--;
+          if (this.ballCount <= 0) this.gameOver();
+          else this.resetBall();
+        }
+      }
+
+      // =========================
+      // Rendering
+      // =========================
+      render() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        // Blocks
+        for (let i = 0; i < 40; i++) {
+          const row = Math.floor(i / 8);
+          const col = i % 8;
+
+          const status = BLOCK_STATUS[i];
+          if (status > 4) continue;
+
+          this.ctx.fillStyle = BLOCK_COLORS[status];
+          this.ctx.fillRect(
+            BLOCK_START_X + col * BLOCK_GAP_X,
+            BLOCK_START_Y + row * BLOCK_GAP_Y,
+            BLOCK_W,
+            BLOCK_H
+          );
+        }
+
+        // Ball
+        this.ctx.fillStyle = "#FFFFFF";
+        this.ctx.fillRect(this.ballX, this.ballY, 8, 8);
+
+        // Paddle
+        this.ctx.fillStyle = "#B0B0FF";
+        this.ctx.fillRect(this.paddleX, 280, 40, 4);
+
+        // UI
+        this.ctx.font = "16px sans-serif";
+        this.ctx.fillText(`Balls: ${this.ballCount}`, 10, 20);
+        this.ctx.fillText(`Time: ${Math.floor((Date.now() - this.startTime) / 1000)}`, 10, 40);
+
+        if (!this.gameRunning) {
+          this.ctx.fillStyle = "#CC4444";
+          this.ctx.font = "24px sans-serif";
+          this.ctx.fillText("CLICK TO START", 120, 230);
+        }
+      }
+
+      // =========================
+      // Game Loop
+      // =========================
+      gameLoop = () => {
+        if (this.gameRunning) {
+          this.update();
+          this.render();
+          requestAnimationFrame(this.gameLoop);
+        } else {
+          this.render();
+        }
+      };
+
+      // =========================
+      // Game End States
+      // =========================
+      gameOver() {
+        this.gameRunning = false;
+      }
+
+      gameClear() {
+        this.gameRunning = false;
+      }
+
+      // =========================
+      // Input
+      // =========================
+      subscribeToEvents() {
+        this.canvas.addEventListener("mousemove", (e) => {
+          if (!this.gameLoaded) return;
+
+          const rect = this.canvas.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+
+          this.paddleX = x - 20;
+          if (this.paddleX < 16) this.paddleX = 16;
+          if (this.paddleX > 370) this.paddleX = 370;
+        });
+
+        this.canvas.addEventListener("click", () => {
+          if (!this.gameRunning)
+            this.initGame();
+        });
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const bg = new BreakoutGame();
+      bg.subscribeToEvents();
+      bg.render();
+    });
+  </script>
+  <style type="text/css">
+    #breakoutgame {
+      background: #000;
+      border: 1px solid;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="breakoutgame" width="440" height="320" style="border:1px solid"></canvas>
+</body>
+
+</html>
